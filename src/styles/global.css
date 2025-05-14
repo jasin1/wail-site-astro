@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+:root{
+  --font-primary: Lato, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-heading: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --font-weight-black: 900;
+  --font-weight-medium: 520;
+  --font-weight-regular: 400;
+  --font-weight-normal: 300;
+
+
+  /* Colors */
+  --color-black: #040404;
+  --color-white: #FFFFFF;
+  --color-bg-dark: #272223;
+  --color-bg-light: #f6f2ec;
+  --color-bg-yellow: #edb365;
+  --color-grey:#e2dccf;
+  --color-dark-grey: #434343;
+  --color-text-grey: #a09e9e;
+  --color-highlight: #EDB365;
+  --color-dark-highlight: #B1721E;
+
+  /* Base font size */
+  --font-size-display: 5.5rem;
+  --font-size-quote: clamp(2rem, 4vw + 1rem, 2.25rem);
+  --font-size-body: 1.25rem;
+  --font-size-small: .875rem;
+  --font-size-tiny: .75rem;
+  
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body{
+  height: 100%;
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  /* font-size: var(--font-size-body); */
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+p, li, span, div, a {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-normal);
+  text-wrap: pretty;
+  font-size: var(--font-size-body);
+  
+}
+
+li{
+  list-style: none;
+  display: block;
+}
+
+q{
+  font-size: var(--font-size-quote);
+  font-weight: bold;
+  font-family: var(--font-heading);
+  quotes: none;
+}
+
+img{
+  display: block;
+  aspect-ratio: auto;
+  width: auto;
+  overflow: auto;
+  object-fit: fill;
+  height: 100%;
+  border-radius: .75rem;
+  max-width: none;
+  /* vertical-align: middle; */
+}
