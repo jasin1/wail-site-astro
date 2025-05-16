@@ -1,0 +1,33 @@
+---
+
+const url = new URL(Astro.request.url);
+const currentPath = url.pathname;
+
+---
+
+<div class="nav-wrapper">
+  <div class="wrapper">
+    <div class="nav-container">
+      <div class="logo-wrapper"></div>
+      <div class="menu-wrapper">
+        <ul class="nav-links">
+          <li class={`nav-link ${currentPath === '/over-mij' ? 'active' : ''}`}>
+            <a href="/over-mij">Over Mij</a>
+          </li>
+          <li class={`nav-link ${currentPath === '/over-mij' ? 'active' : ''}`}>
+            <a href="/trainingen">Trainingen</a>
+          </li>
+          <li class={`nav-link ${currentPath === '/over-mij' ? 'active' : ''}`}>
+            <a href="/acteren">Acteren</a>
+          </li>
+          <li class={`nav-link ${currentPath === '/over-mij' ? 'active' : ''}`}>
+            <a href="/blog">Blog</a>
+          </li>
+          <li class={`nav-link ${currentPath === '/over-mij' ? 'active' : ''}`}>
+            <a href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
