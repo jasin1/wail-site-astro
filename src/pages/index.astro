@@ -50,9 +50,166 @@ import "../styles/global.css";
       <div class="link-wrapper">
         <a href="https://www.crkbo.nl/" class="crkbo-link" target="_blank">
           <div class="img-wrapper">
-            <img src="/images/CRKBO.svg" alt="CRKBO link"/>
+            <img src="/images/CRKBO.svg" alt="CRKBO link" />
           </div>
         </a>
+      </div>
+    </div>
+  </section>
+  <section class="home-werk">
+    <div class="wrapper">
+      <div class="home-trainingen">
+        <div class="home-content-block">
+          <p class="tiny-txt">Trainingen</p>
+          <h2>Trainingen</h2>
+          <p class="margin-bottom-normal">
+            We hebben allemaal te maken met lastig gedrag en soms zelfs agressie
+            op de werkvloer. Hoe ga je hier professioneel en zelfverzekerd mee
+            om? Daarnaast ervaren we allemaal stress. Maar hoe kun je stress
+            effectief managen en zorgen voor je emotionele welzijn? Op
+            interactieve wijze train ik jouw werknemers en voorzie ik hen van
+            praktische tools om met lastig gedrag, agressie en stress om te gaan
+            en hun emotionele welzijn te versterken
+          </p>
+          <div class="btn-wrapper">
+            <a href="/trainingen" class="normal-button">Trainingen</a>
+          </div>
+        </div>
+        <div class="img-wrapper">
+          <img src="/images/wail_home-trainingen.jpg" alt="" class="home-img" />
+        </div>
+      </div>
+
+      <div class="home-acteren">
+        <div class="img-wrapper">
+          <img src="/images/wail_home-acteur.jpg" alt="" class="home-img" />
+        </div>
+        <div class="home-content-block">
+          <p class="tiny-txt">Trainingsacteren</p>
+          <h2>Trainingsacteur</h2>
+          <p class="margin-bottom-normal">
+            Als trainingsacteur draag ik bij aan het verbeteren van de
+            communicatieve vaardigheden van uw werknemers. Met mijn ervaring en
+            educatieve achtergrond beschik ik over alles wat nodig is om
+            diversiteit, maatwerk en plezierige trainingen te bieden, met
+            realistische scenario's die nauw aansluiten op uw werk.
+          </p>
+          <div class="btn-wrapper">
+            <a href="/acteren" class="normal-button">Trainingsacteur</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="logo-carousel">
+    <div class="carousel-header">
+      <h2>Samen gewerkt met</h2>
+    </div>
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/logo_fiod_nl.png"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/Logo_ministerie_van_defensie_vector.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/Logo_politie.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/logo_sanquin_black.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/logo-gemeente.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/Logo-handhaving-nederland.png"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/logo-rotterdam.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/logo-uwv.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/Ministerie_van_Buitenlandse_Zaken_Logo.jpeg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/Roc-logo.png"
+          alt=""
+        />
+      </div>
+
+      <div class="carousel-slide">
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/logo_fiod_nl.png"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/Logo_ministerie_van_defensie_vector.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/Logo_politie.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/logo_sanquin_black.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/logo-gemeente.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/Logo-handhaving-nederland.png"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/logo-rotterdam.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/logo-uwv.svg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/Ministerie_van_Buitenlandse_Zaken_Logo.jpeg"
+          alt=""
+        />
+        <img
+          class="carousel-img"
+          src="/images/carousel-logos/Roc-logo.png"
+          alt=""
+        />
       </div>
     </div>
   </section>
@@ -106,11 +263,98 @@ import "../styles/global.css";
     padding-bottom: 2rem;
   }
 
-  .crkbo-link{
+  .crkbo-link {
     max-width: 100%;
     display: inline-block;
   }
-  .img-wrapper{
-    height: 7.5rem;
+
+  .home-intro {
+    padding-top: 6rem;
+    background-color: var(--color-bg-light);
+    margin-bottom: 6rem;
   }
+
+  .home-intro-text {
+    max-width: 50rem;
+    padding-bottom: 2rem;
+  }
+  .home-trainingen {
+    grid-column-gap: 4rem;
+    grid-row-gap: 16px;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    display: grid;
+    margin-bottom: 6rem;
+  }
+
+  .home-content-blok p {
+    margin-bottom: 2.5rem;
+  }
+
+  .home-trainingen .img-wrapper {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: auto;
+    max-height: 479px;
+  }
+
+  .home-img {
+    max-width: 479px;
+  }
+
+  .home-acteren {
+    grid-column-gap: 4rem;
+    grid-row-gap: 16px;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    display: grid;
+  }
+
+  /* --------- Carousel ----------- */
+
+  .carousel-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .logo-carousel{
+    overflow: hidden;
+    padding: 4rem 0;
+  }
+
+  .carousel-track{
+    display: flex;
+    width: max-content;
+    animation: scroll-left 30s linear infinite;
+  }
+
+  .carousel-slide{
+    display: flex;
+    gap: 4rem;
+    margin-left: 4rem;
+  }
+
+  .carousel-img {
+    border-radius: 0;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  /* animation */
+  @keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
 </style>

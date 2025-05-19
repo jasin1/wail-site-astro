@@ -97,6 +97,12 @@ q{
   quotes: none;
 }
 
+.tiny-txt{
+  font-size: var(--font-size-tiny);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
 img{
   display: block;
   aspect-ratio: auto;
@@ -105,8 +111,19 @@ img{
   object-fit: fill;
   height: 100%;
   max-width: none;
-
+  border-radius: .75rem;
 }
+
+.img-wrapper{
+    border-radius: 0;
+    /* justify-content: flex-end; */
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    display: flex;
+    overflow: hidden;
+ }
 
 button{
   border: none;
@@ -139,4 +156,12 @@ button{
 .normal-button:hover{
   background-color: var(--color-black);
   color: white;
+}
+
+.margin-bottom-normal{
+  margin-bottom: 2.5rem;
+}
+
+.home-img{
+  transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
 }
