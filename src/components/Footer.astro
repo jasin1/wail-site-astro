@@ -1,0 +1,54 @@
+---
+const thisYear = new Date();
+const footerYearNum = thisYear.getFullYear();
+---
+
+<div class="footer-wrapper">
+  <div class="wrapper">
+    <div class="footer-container">
+      <div class="footer-year">
+        <p>© {footerYearNum} | All rights reserved</p>
+      </div>
+      <div class="footer-logo-wrapper">
+        <a href="/">
+          <img src="/images/new_logo_1.svg" alt="My logo" />
+        </a>
+      </div>
+      <div class="footer-socials">
+        <div class="socialIcon">
+          <a href="https://www.instagram.com/wailalami_/" target="_blank">
+            <img src="/images/insta-icon.svg" alt="instagram-icon" />
+          </a>
+        </div>
+        <div class="socialIcon">
+          <a href="https://nl.linkedin.com/in/wail-alami-336199206" target="_blank">
+            <img src="/images/linkedIn-icon.png" alt="LinkedIn-icon" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .footer-wrapper {
+    background-color: var(--color-bg-dark);
+    padding: 3rem 0;
+  }
+
+  .footer-container {
+    color: var(--color-text-grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .footer-year p {
+    font-size: 14px;
+  }
+</style>

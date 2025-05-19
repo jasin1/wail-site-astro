@@ -1,11 +1,116 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
-import '../styles/global.css'
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
 ---
 
-<BaseLayout 
-title="Home"
-description="Homepage Wail Alami"
->
-	<h1>Home</h1>
+<BaseLayout title="Home" description="Homepage Wail Alami">
+  <section class="hero-section">
+    <div class="wrapper hero">
+      <div class="hero-grid">
+        <div class="hero-img-wrapper">
+          <img class="hero-img" src="/images/wail_main-home-hero.jpg" alt="" />
+        </div>
+        <div class="hero-side">
+          <h1 class="display-txt">Wail Alami</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="home-intro">
+    <div class="wrapper">
+      <h2>OVER MIJ</h2>
+      <div class="home-intro-text">
+        <p>
+          Mijn reis, gekenmerkt door veerkracht en zelfontwikkeling na het
+          overwinnen van een zeldzame vorm van kanker, heeft mijn passie gevormd
+          om anderen te inspireren en motiveren. Als toegewijde trainer &
+          trainingsacteur werk ik nauw samen met organisaties, waarbij
+          interactieve rollenspellen en scenario's worden gecreëerd om
+          competenties en communicatieve vaardigheden te bevorderen.
+          <br />
+          <br />
+          Maar mijn betrokkenheid gaat verder. Ik deel mijn inzichten ook via trainingen
+          over stressmanagement en effectief communiceren, waarin ik praktische tools
+          aanreik om de uitdagingen van het moderne leven aan te gaan. Stress is
+          een universele factor, en het is mijn missie om anderen te helpen niet
+          alleen te overleven, maar te floreren in een wereld die vaak veeleisend
+          is. Daarnaast deel ik mijn verhaal en expertise in inspirerende lezingen.
+          Deze lezingen gaan verder dan het delen van ervaringen; ze zijn bedoeld
+          om een vonk van motivatie te ontsteken en een positieve verandering in
+          gang te zetten.
+          <br />
+          <br />
+          Samen werken we aan een toekomst waarin groei, zowel persoonlijk als professioneel,
+          centraal staat. Of het nu op het podium is als acteur, tijdens trainingen
+          over weerbaarheid en stressmanagement of in inspirerende lezingen, mijn
+          doel is eenvoudig: anderen helpen hun volledige potentieel te realiseren.
+          Laten we samen bouwen aan een krachtige gemeenschap van groei en welzijn.
+        </p>
+      </div>
+      <div class="link-wrapper">
+        <a href="https://www.crkbo.nl/" class="crkbo-link" target="_blank">
+          <div class="img-wrapper">
+            <img src="/images/CRKBO.svg" alt="CRKBO link"/>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .hero-section {
+    color: white;
+    background-color: var(--color-bg-dark);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    flex-direction: row;
+    grid-template-rows: auto;
+    grid-template-columns: 0.5fr 0.5fr;
+    grid-auto-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .hero-img {
+    vertical-align: middle;
+    max-width: 100%;
+    display: inline-block;
+  }
+
+  .hero {
+    padding-bottom: 0;
+  }
+
+  .hero-side {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 30%;
+  }
+
+  .display-txt {
+    font-size: 5.5rem;
+  }
+
+  .home-intro {
+    padding-top: 6rem;
+    background-color: var(--color-bg-light);
+    margin-bottom: 6rem;
+  }
+
+  .home-intro-text {
+    max-width: 50rem;
+    padding-bottom: 2rem;
+  }
+
+  .crkbo-link{
+    max-width: 100%;
+    display: inline-block;
+  }
+  .img-wrapper{
+    height: 7.5rem;
+  }
+</style>

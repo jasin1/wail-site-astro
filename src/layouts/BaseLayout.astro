@@ -1,19 +1,25 @@
 ---
 import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import CTA from "../components/CTA.astro";
 const { title, description } = Astro.props;
 ---
 
 <html lang="nl">
   <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.svg" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
   </head>
   <body>
     <main>
+      <Navbar />
       <slot />
+      <CTA />
+      <Footer />
     </main>
   </body>
 </html>

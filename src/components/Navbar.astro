@@ -8,22 +8,25 @@ const currentPath = url.pathname;
 <div class="nav-wrapper">
   <div class="wrapper">
     <div class="nav-container">
-      <div class="logo-wrapper"></div>
+      <div class="logo-wrapper">
+        <a href="/">
+        <img src="/images/new_logo_1.svg" alt=""></a>
+      </div>
       <div class="menu-wrapper">
         <ul class="nav-links">
           <li class={`nav-link ${currentPath === '/over-mij' ? 'active' : ''}`}>
             <a href="/over-mij">Over Mij</a>
           </li>
-          <li class={`nav-link ${currentPath === '/over-mij' ? 'active' : ''}`}>
+          <li class={`nav-link ${currentPath === '/trainingen' ? 'active' : ''}`}>
             <a href="/trainingen">Trainingen</a>
           </li>
-          <li class={`nav-link ${currentPath === '/over-mij' ? 'active' : ''}`}>
+          <li class={`nav-link ${currentPath === '/acteren' ? 'active' : ''}`}>
             <a href="/acteren">Acteren</a>
           </li>
-          <li class={`nav-link ${currentPath === '/over-mij' ? 'active' : ''}`}>
+          <li class={`nav-link ${currentPath === '/blog' ? 'active' : ''}`}>
             <a href="/blog">Blog</a>
           </li>
-          <li class={`nav-link ${currentPath === '/over-mij' ? 'active' : ''}`}>
+          <li class={`nav-link ${currentPath === '/contact' ? 'active' : ''}`}>
             <a href="/contact">Contact</a>
           </li>
         </ul>
@@ -31,3 +34,58 @@ const currentPath = url.pathname;
     </div>
   </div>
 </div>
+
+<style>
+
+
+.nav-wrapper{
+  background-color: var(--color-bg-dark);
+  color: var(--color-white);
+}
+
+.nav-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-wrapper{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--color-black);
+}
+
+
+.nav-links{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link{
+  text-decoration: none;
+  color:var(--color-white);
+  font-size: var(--font-size-small);
+  font-family: var(--font-heading);
+}
+
+.active{
+  color: var(--color-bg-yellow);
+}
+
+a{
+  text-decoration: none;
+  color: white;
+  font-size: var(--font-size-small);
+  transition: color 0.5s;
+}
+
+.nav-link.active a {
+  color: var(--color-bg-yellow);
+}
+
+</style>
