@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import CTA from "../components/CTA.astro";
 const { title, description } = Astro.props;
+const { url } = Astro;
+const currentPath = url.pathname;
 ---
 
 <html lang="nl">
@@ -18,7 +20,8 @@ const { title, description } = Astro.props;
     <main>
       <Navbar />
       <slot />
-      <CTA />
+
+      {currentPath !== '/contact' && <CTA />}
       <Footer />
     </main>
   </body>
