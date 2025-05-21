@@ -23,10 +23,11 @@
   --color-highlight: #edb365;
   --color-dark-highlight: #b1721e;
   --color-dark-divider: #e0d8cd;
+  --color-bg-dark-brown: #543409;
 
   /* Base font size */
   --font-size-display: 5.5rem;
-  --font-size-quote: clamp(2rem, 4vw + 1rem, 2.70rem);
+  --font-size-quote: clamp(2rem, 4vw + 1rem, 2.7rem);
   --font-size-body: 1.25rem;
   --font-size-small: 0.875rem;
   --font-size-tiny: 0.75rem;
@@ -70,6 +71,17 @@ h2 {
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
+}
+
+.heading-style-h2 {
+  font-size: 2.25rem;
+  line-height: 1.5;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+a{
+  text-decoration: none;
 }
 
 p,
@@ -147,6 +159,8 @@ button {
 
 .normal-button {
   padding: 0.75rem 1.5rem;
+  border: none;
+  cursor: pointer;
   border-radius: 2.5rem;
   font-family: var(--font-heading);
   font-size: var(--font-size-small);
@@ -194,6 +208,19 @@ button {
   gap: 0.5rem;
 }
 
-  .socialIcon  img{
-    border-radius: 0 !important;
-  }
+.socialIcon img {
+  border-radius: 0 !important;
+}
+
+.multi-column-text {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+.break-column {
+  break-before: column;
+}
+
+.max-width-large{
+  max-width: 48rem;
+}

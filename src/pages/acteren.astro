@@ -1,15 +1,75 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Testimonials from "../components/Testimonials.astro";
 ---
 
-<BaseLayout
-title="acteren"
-description="acteren"
->
-<Hero
-backgroundImage="/images/acteren-hero.jpg"
-title="Acteren"
-/>
+<BaseLayout title="acteren" description="acteren">
+  <Hero backgroundImage="/images/acteren-hero.jpg" title="Acteren" />
+  <section class="act-section">
+    <div class="wrapper">
+      <div class="act-intro">
+        <div class="act-content-wrapper">
+          <div class="act-content">
+            <div class="intro-indict">
+              <p class="tiny-txt">Acteren</p>
+            </div>
+            <h2 class="heading-style-h2">
+              Maak jouw team weerbaarder met bewezen methoden op een
+              interactieve praktische werkwijze!
+            </h2>
+            <p class="max-width-large">
+              Ontdek hoe je jouw team weerbaarder maakt met laagdrempelige, praktische oefeningen waarin ik als trainingsacteur realistische scenario’s neerzet.
+              <br/>
+              <br/>
+
+Of het nu gaat om een gesprek met een leerling die begrensd moet worden, een gijzelingssimulatie, een feedbackgesprek of een geëmotioneerde klant in de supermarkt, mijn brede ervaring stelt me in staat om uiteenlopende gedragingen geloofwaardig neer te zetten. Mijn aanpak is toegankelijk en effectief.
+<br/><br/>
+
+Dankzij mijn achtergrond als trainer en mijn expertise in communicatie en psychologie, kijk ik verder dan het oppervlakkige gedrag. Ik voorzie je van waardevolle, complete feedback waarmee jij je vaardigheden kunt ontwikkelen en een nóg productievere professional wordt.
+‍<br/><br/>
+Klaar om impact te maken? Laten we samen aan de slag gaan!
+            </p>
+          </div>
+          <div class="act-img">
+            <img src="/images/trainingen-02.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Testimonials />
 </BaseLayout>
 
+<style>
+  .act-section{
+     background-color: var(--color-bg-light);
+     padding: 6rem 0;
+  }
+  .act-content-wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+  }
+  .act-content{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .act-img{
+    max-height: 700px;
+    flex: 2;
+  }
+  .act-img img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

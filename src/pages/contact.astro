@@ -1,11 +1,216 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout
-title="contact"
-description="Contact"
->
-<h1>Contact</h1>
+<BaseLayout title="contact" description="Contact">
+  <section>
+    <div class="wrapper">
+      <div class="contact-content">
+        <div class="contact-block">
+          <h1 class="heading-style-h2">
+            Samen groeien begint bij contact maken.
+          </h1>
+          <p>Vul het formulier in en dan neem ik contact met u op.</p>
+          <div class="contact-email-link-wrapper">
+            <a
+              href="mailto:info@wwailalami.nl"
+              class="contact-email-link"
+              target="_blank"
+            >
+              <div class="email-icon-wrapper">
+                <svg
+                  width="20"
+                  height="16"
+                  viewBox="0 0 20 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2 0H18C19.1046 0 20 0.89543 20 2V14C20 15.1046 19.1046 16 18 16H2C0.89543 16 0 15.1046 0 14V2C0 0.89543 0.89543 0 2 0ZM11.65 11.45L18 7V4.9L10.65 10.05C10.2591 10.3213 9.7409 10.3213 9.35 10.05L2 4.9V7L8.35 11.45C9.341 12.1427 10.659 12.1427 11.65 11.45Z"
+                    fill="#434343"></path>
+                </svg>
+              </div>
+              <div class="email-text-block">
+                <span>info@wailalami.nl</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-form-wrapper">
+            <form action="">
+              <div class="form-block">
+                <div class="form-inputs-wrapper">
+                  <div class="form-input-block">
+                    <label for="fname" class="contact-filed-label"
+                      >Voornaam</label
+                    >
+                    <input
+                      type="text"
+                      id="fname"
+                      class="contact-input"
+                      maxlength="256"
+                    />
+                  </div>
+                  <div class="form-input-block">
+                    <label for="lname" class="contact-filed-label"
+                      >Achternaam</label
+                    >
+                    <input
+                      type="text"
+                      id="lname"
+                      class="contact-input"
+                      maxlength="256"
+                    />
+                  </div>
+                  <div class="form-input-block">
+                    <label for="email" class="contact-filed-label">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      class="contact-input"
+                      maxlength="256"
+                    />
+                  </div>
+                  <div class="form-input-block">
+                    <label for="phone" class="contact-filed-label"
+                      >Achternaam</label
+                    >
+                    <input
+                      type="tel"
+                      id="phone"
+                      class="contact-input"
+                      maxlength="256"
+                    />
+                  </div>
+                </div>
+                <div class="form-input-block">
+                  <label for="onderwerp" class="contact-filed-label"
+                    >Kies een onderwerp
+                  </label>
+                  <select
+                    name="onderwerp"
+                    id="onderwerp"
+                    class="contact-select"
+                  >
+                    <option value="">Kies een...</option>
+                    <option value="algemeen">Algemeen</option>
+                    <option value="acteren">Acteren</option>
+                    <option value="trainingen">Trainingen</option>
+                  </select>
+                </div>
+                <div class="form-input-block">
+                  <label for="field" class="contact-filed-label">bericht</label>
+                  <textarea
+                    name="field"
+                    id="field"
+                    maxlength="5000"
+                    placeholder="Type uw bericht"
+                    class="contact-input"></textarea>
+                </div>
+              </div>
+              <input type="submit" class="normal-button" value="Versturen" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
+<style>
+  .contact-content {
+    display: grid;
+    column-gap: 2.5rem;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 0.75fr;
+    grid-auto-columns: 1fr;
+    padding-top: 2.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-email-link-wrapper {
+    margin-top: 2rem;
+  }
+  .contact-email-link {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: var(--color-dark-highlight);
+  }
+
+  .email-text-block {
+    margin-top: -5px;
+  }
+
+  .email-text-block span {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  /* Form styling  */
+
+  .form-inputs-wrapper {
+    display: grid;
+    column-gap: 1.5rem;
+    row-gap: 1rem;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+  }
+
+  .form-input-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .contact-filed-label {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .contact-input {
+    border-radius: 8px;
+    vertical-align: middle;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    display: block;
+    line-height: 1.42857;
+  }
+
+  textarea.contact-input {
+    height: 120px;
+    resize: vertical;
+    margin-bottom: 2rem;
+  }
+
+  .contact-input::placeholder {
+    color: #999;
+    /* font-style: italic; */
+    font-size: 14px;
+    font-family: var(--font-primary);
+    opacity: 1;
+  }
+
+  .contact-select {
+    border-radius: 8px;
+    color: #333;
+    background-color: #f3f3f3;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    display: block;
+  }
+</style>

@@ -214,10 +214,58 @@ import Testimonials from "../components/Testimonials.astro";
       </div>
     </div>
   </section>
+  <section class="section-blog">
+    <div class="wrapper">
+      <div class="home-blog-container">
+        <div class="blog-header">
+          <p class="tiny-txt">Blog</p>
+          <h2>Blogs</h2>
+          <p>
+            Welkom in mijn blogsectie! Hier deel ik artikelen over mijn interesses en expertise. Ontdek praktische tips, verdiep je in wetenschap, psychologie en zelfontwikkeling, en laat je inspireren door meer onderwerpen. Meld je aan voor de nieuwsbrief en blijf altijd op de hoogte van nieuwe artikelen
+          </p>
+        </div>
+        <div class="blog-thumbs-wrapper">
+          <div class="blog-thumb">
+            <a href="">
+              <div class="thumb-img-wrapper">
+                <img src="" alt="" class="thumb-img">
+              </div>
+              <div class="tiny-txt-wrapper">
+                <p class="tiny-txt">Gezondheid</p>
+              </div>
+              <div class="thumb-title-wrapper">
+                <h3>Pornografie, de duistere waarheid: wat doet het met je brein?</h3>
+              </div>
+              <div class="thumb-excerpt">
+                <p>Wat doet het bekijken van pornografie met je brein?</p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
   <Testimonials/>
 </BaseLayout>
 
 <style>
+
+  /* --------- Blog section ------------- */
+
+  .home-blog-container{
+    
+  }
+
+  .blog-header{
+    margin-bottom: 2rem;
+  }
+
+  .blog-thumbs-wrapper{}
+
+  .blog-thumb{}
+
+
   .hero-section {
     color: white;
     background-color: var(--color-bg-dark);
@@ -357,6 +405,7 @@ import Testimonials from "../components/Testimonials.astro";
     transform: translateX(-50%);
   }
 }
+
 
 
 </style>
