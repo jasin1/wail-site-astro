@@ -69,8 +69,19 @@ h1 {
 
 h2 {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 1.5rem;
+}
+
+h3, h4, h5, h6{
+  margin-bottom: 1rem;
+}
+
+.heading-style-h1-display{
+  font-size: 5.5rem;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 2rem;
 }
 
 .heading-style-h2 {
@@ -82,6 +93,7 @@ h2 {
 
 a{
   text-decoration: none;
+  color: var(--color-black);
 }
 
 p,
@@ -110,6 +122,15 @@ q {
   font-weight: bold;
   font-family: var(--font-heading);
   quotes: none;
+}
+
+blockquote{
+  border-left: 5px solid #e2e2e2;
+  margin-bottom: 1.5rem;
+  padding: 10px 20px;
+  line-height: 2rem;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
 .tiny-txt {
@@ -180,7 +201,12 @@ button {
 }
 
 .normal-button:hover {
-  background-color: var(--color-black);
+  background-color: var(--color-bg-yellow);
+  /* color: white; */
+}
+
+.button-second:hover{
+    background-color: var(--color-black);
   color: white;
 }
 

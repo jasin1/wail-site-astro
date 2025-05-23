@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="blog-post" description="blog=post">
+  <section class="blog-post-header-wrapper">
+    <article class="blog-post-header">
+      <div class="blog-img-wrapper">
+        <img src="/images/blog/thumb-hand.jpg" alt="" />
+        <div class="overlay"></div>
+        <h1>Pornografie: De duistere waarheid</h1>
+      </div>
+    </article>
+  </section>
+  <section class="blog-post-content">
+    <div class="blog-post-wrapper">
+      <div class="blog-post-top"></div>
+      <article class="blog-post">
+        <h2>Dit is een H2 tag</h2>
+        <h3>Dit is een H3</h3>
+        <h4>Dit is een h4</h4>
+        <h5>Dit is een H5</h5>
+        <h6>Dit is een H6</h6>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In cursus
+          magna augue, <a>id pretium lectus</a> id pretium lectus auctor nec. Nunc
+          egestas, ipsum sit amet placerat sagittis, velit sem convallis turpis,
+          a tempus nibh massa sed turpis. Proin posuere ante eget sodales tincidunt.
+          Nunc vitae velit nulla. Proin scelerisque neque in sapien sodales, in tristique
+          diam hendrerit. Nulla faucibus nibh vitae pharetra sagittis. Fusce quis
+          condimentum lectus, non rhoncus risus. Quisque quam lorem, scelerisque
+          et sagittis non, ullamcorper ut leo. Aliquam a risus mollis, ultricies
+          eros eu, eleifend lorem. Quisque ullamcorper, nulla id congue vestibulum,
+          est nisl tincidunt magna, sit amet placerat sem lacus quis magna. Nunc
+          non ipsum quis arcu convallis blandit ut sed tortor. Duis velit orci, tempor
+          semper imperdiet nec, pulvinar id quam. Nulla eu mi magna. Fusce ultricies
+          tellus eu nulla congue, nec dictum ipsum volutpat. Phasellus tincidunt
+          orci vel pellentesque consequat.
+        </p>
+        <blockquote>
+          ''Als het leven je citroenen geeft, maak er dan limonade van''.
+        </blockquote>
+        <ul role="list">
+          <li>Pornografie is erg verslavend.</li><li>
+            Het verlaagt je zelfbeeld.
+          </li><li>
+            Het is gelinkt aan suïcidale gedachten en depressieve gevoelens.
+          </li><li>
+            Het leidt tot erectieproblemen en een vertekend beeld van de
+            realiteit.
+          </li><li>
+            Het vergroot de kans op huwelijksproblemen en echtscheidingen.
+          </li><li>
+            Pornoverslaafden ervaren minder levenslust, energie en cognitieve
+            scherpte.
+          </li>
+        </ul>
+                <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In cursus
+          magna augue, <a>id pretium lectus</a> id pretium lectus auctor nec. Nunc
+          egestas, ipsum sit amet placerat sagittis, velit sem convallis turpis,
+          a tempus nibh massa sed turpis. Proin posuere ante eget sodales tincidunt.
+          Nunc vitae velit nulla. Proin scelerisque neque in sapien sodales, in tristique
+          diam hendrerit. Nulla faucibus nibh vitae pharetra sagittis. Fusce quis
+          condimentum lectus, non rhoncus risus. Quisque quam lorem, scelerisque
+          et sagittis non, ullamcorper ut leo. Aliquam a risus mollis, ultricies
+          eros eu, eleifend lorem. Quisque ullamcorper, nulla id congue vestibulum,
+          est nisl tincidunt magna, sit amet placerat sem lacus quis magna. Nunc
+          non ipsum quis arcu convallis blandit ut sed tortor. Duis velit orci, tempor
+          semper imperdiet nec, pulvinar id quam. Nulla eu mi magna. Fusce ultricies
+          tellus eu nulla congue, nec dictum ipsum volutpat. Phasellus tincidunt
+          orci vel pellentesque consequat.
+        </p>
+      </article>
+      <div class="blog-post-footer"></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-post-header-wrapper {
+  }
+
+  .blog-post-header {
+  }
+
+  .blog-img-wrapper {
+    position: relative;
+    border-radius: 0;
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .blog-img-wrapper img {
+    border-radius: 0;
+    object-fit: cover;
+    vertical-align: middle;
+    display: block;
+    aspect-ratio: auto;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+  }
+  .blog-img-wrapper .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+  }
+
+  .blog-img-wrapper h1 {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .blog-post-content {
+    padding: 4rem 0;
+  }
+
+  .blog-post-wrapper {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 48rem;
+  }
+
+  .blog-post p {
+    margin-bottom: 1rem;
+  }
+
+  .blog-post ul {
+    list-style: disc inside;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-post li {
+    list-style-type: disc;
+    list-style-position: inside;
+    display: list-item;
+    font-weight: bold;
+  }
+
+  .blog-post p a {
+    font-weight: bold;
+    color: var(--color-dark-highlight);
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+    .blog-post p a:hover {
+      color: var(--color-bg-dark-brown);
+    }
+</style>

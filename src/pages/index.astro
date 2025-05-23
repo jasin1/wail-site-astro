@@ -214,6 +214,7 @@ import Testimonials from "../components/Testimonials.astro";
       </div>
     </div>
   </section>
+  <Testimonials />
   <section class="section-blog">
     <div class="wrapper">
       <div class="home-blog-container">
@@ -221,50 +222,144 @@ import Testimonials from "../components/Testimonials.astro";
           <p class="tiny-txt">Blog</p>
           <h2>Blogs</h2>
           <p>
-            Welkom in mijn blogsectie! Hier deel ik artikelen over mijn interesses en expertise. Ontdek praktische tips, verdiep je in wetenschap, psychologie en zelfontwikkeling, en laat je inspireren door meer onderwerpen. Meld je aan voor de nieuwsbrief en blijf altijd op de hoogte van nieuwe artikelen
+            Welkom in mijn blogsectie! Hier deel ik artikelen over mijn
+            interesses en expertise. Ontdek praktische tips, verdiep je in
+            wetenschap, psychologie en zelfontwikkeling, en laat je inspireren
+            door meer onderwerpen. Meld je aan voor de nieuwsbrief en blijf
+            altijd op de hoogte van nieuwe artikelen
           </p>
         </div>
         <div class="blog-thumbs-wrapper">
-          <div class="blog-thumb">
-            <a href="">
+          <div class="blog-thumb-container">
+            <a href="" class="blog-thumb">
               <div class="thumb-img-wrapper">
-                <img src="" alt="" class="thumb-img">
+                <img
+                  src="/images/blog/thumb-laptop.jpg"
+                  alt=""
+                  class="thumb-img"
+                />
               </div>
               <div class="tiny-txt-wrapper">
                 <p class="tiny-txt">Gezondheid</p>
               </div>
               <div class="thumb-title-wrapper">
-                <h3>Pornografie, de duistere waarheid: wat doet het met je brein?</h3>
+                <h3>
+                  Pornografie, de duistere waarheid: wat doet het met je brein?
+                </h3>
               </div>
               <div class="thumb-excerpt">
                 <p>Wat doet het bekijken van pornografie met je brein?</p>
               </div>
             </a>
           </div>
-
+          <div class="blog-thumb-container">
+            <a href="" class="blog-thumb">
+              <div class="thumb-img-wrapper">
+                <img
+                  src="/images/blog/thumb-hand.jpg"
+                  alt=""
+                  class="thumb-img"
+                />
+              </div>
+              <div class="tiny-txt-wrapper">
+                <p class="tiny-txt">Gezondheid</p>
+              </div>
+              <div class="thumb-title-wrapper">
+                <h3>
+                  Pornografie, de duistere waarheid: De duistere waarheid
+                </h3>
+              </div>
+              <div class="thumb-excerpt">
+                <p>De gevaren van pornografie voor onze maatschappij en jeugd</p>
+              </div>
+            </a>
+          </div>
+          <div class="blog-thumb-container">
+            <a href="" class="blog-thumb">
+              <div class="thumb-img-wrapper">
+                <img
+                  src="/images/blog/thumb-wail.jpg"
+                  alt=""
+                  class="thumb-img"
+                />
+              </div>
+              <div class="tiny-txt-wrapper">
+                <p class="tiny-txt">Gezondheid</p>
+              </div>
+              <div class="thumb-title-wrapper">
+                <h3>
+                  'Als het leven je citroenen geeft'
+                </h3>
+              </div>
+              <div class="thumb-excerpt">
+                <p>Na een driejarige strijd tegen kanker deel ik mijn persoonlijke reis van pijn, verlies en veerkracht. Ontdek hoe ik positief bleef denken en handelen, leer mijn geheimen voor een fitter, vitaler leven en laat je inspireren.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="home-blog-btn-wrapper">
+          <div class="home-btn-wrapper">
+            <a href="/blog" class="normal-button">Zie Meer</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <Testimonials/>
 </BaseLayout>
 
 <style>
-
   /* --------- Blog section ------------- */
 
-  .home-blog-container{
-    
+  .section-blog{
+    padding: 3rem 0;
   }
 
-  .blog-header{
+  .home-blog-container {
+  }
+
+  .blog-header {
     margin-bottom: 2rem;
   }
 
-  .blog-thumbs-wrapper{}
+  .blog-thumbs-wrapper {
+    display: grid;
+    column-gap: 2rem;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    align-items: stretch;
+    margin-bottom: 2.5rem;
+  }
 
-  .blog-thumb{}
+  .blog-thumb {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 
+  .thumb-img-wrapper{
+    margin-bottom: 1.5rem;
+  }
+
+  .thumb-img {
+    object-fit: cover;
+    border-radius: 12px;
+    max-width: 100%;
+    width: 403px;
+    height: 14rem;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .thumb-title-wrapper{
+    margin-bottom: 1rem;
+  }
+
+  .home-blog-btn-wrapper{
+    display: flex;
+    justify-content: flex-end;
+  }
 
   .hero-section {
     color: white;
@@ -366,25 +461,25 @@ import Testimonials from "../components/Testimonials.astro";
 
   /* --------- Carousel ----------- */
 
-  .carousel-header{
+  .carousel-header {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 2.5rem;
   }
 
-  .logo-carousel{
+  .logo-carousel {
     overflow: hidden;
     padding: 4rem 0;
   }
 
-  .carousel-track{
+  .carousel-track {
     display: flex;
     width: max-content;
     animation: scroll-left 30s linear infinite;
   }
 
-  .carousel-slide{
+  .carousel-slide {
     display: flex;
     gap: 4rem;
     margin-left: 4rem;
@@ -398,14 +493,11 @@ import Testimonials from "../components/Testimonials.astro";
 
   /* animation */
   @keyframes scroll-left {
-  0% {
-    transform: translateX(0);
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-
-
 </style>
