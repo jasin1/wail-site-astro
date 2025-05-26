@@ -265,12 +265,12 @@ import Testimonials from "../components/Testimonials.astro";
                 <p class="tiny-txt">Gezondheid</p>
               </div>
               <div class="thumb-title-wrapper">
-                <h3>
-                  Pornografie, de duistere waarheid: De duistere waarheid
-                </h3>
+                <h3>Pornografie, de duistere waarheid: De duistere waarheid</h3>
               </div>
               <div class="thumb-excerpt">
-                <p>De gevaren van pornografie voor onze maatschappij en jeugd</p>
+                <p>
+                  De gevaren van pornografie voor onze maatschappij en jeugd
+                </p>
               </div>
             </a>
           </div>
@@ -287,12 +287,15 @@ import Testimonials from "../components/Testimonials.astro";
                 <p class="tiny-txt">Gezondheid</p>
               </div>
               <div class="thumb-title-wrapper">
-                <h3>
-                  'Als het leven je citroenen geeft'
-                </h3>
+                <h3>'Als het leven je citroenen geeft'</h3>
               </div>
               <div class="thumb-excerpt">
-                <p>Na een driejarige strijd tegen kanker deel ik mijn persoonlijke reis van pijn, verlies en veerkracht. Ontdek hoe ik positief bleef denken en handelen, leer mijn geheimen voor een fitter, vitaler leven en laat je inspireren.</p>
+                <p>
+                  Na een driejarige strijd tegen kanker deel ik mijn
+                  persoonlijke reis van pijn, verlies en veerkracht. Ontdek hoe
+                  ik positief bleef denken en handelen, leer mijn geheimen voor
+                  een fitter, vitaler leven en laat je inspireren.
+                </p>
               </div>
             </a>
           </div>
@@ -310,7 +313,7 @@ import Testimonials from "../components/Testimonials.astro";
 <style>
   /* --------- Blog section ------------- */
 
-  .section-blog{
+  .section-blog {
     padding: 3rem 0;
   }
 
@@ -324,6 +327,7 @@ import Testimonials from "../components/Testimonials.astro";
   .blog-thumbs-wrapper {
     display: grid;
     column-gap: 2rem;
+    row-gap: 3.5rem;
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-columns: 1fr;
@@ -338,7 +342,7 @@ import Testimonials from "../components/Testimonials.astro";
     align-items: flex-start;
   }
 
-  .thumb-img-wrapper{
+  .thumb-img-wrapper {
     margin-bottom: 1.5rem;
   }
 
@@ -352,11 +356,11 @@ import Testimonials from "../components/Testimonials.astro";
     display: inline-block;
   }
 
-  .thumb-title-wrapper{
+  .thumb-title-wrapper {
     margin-bottom: 1rem;
   }
 
-  .home-blog-btn-wrapper{
+  .home-blog-btn-wrapper {
     display: flex;
     justify-content: flex-end;
   }
@@ -498,6 +502,44 @@ import Testimonials from "../components/Testimonials.astro";
     }
     100% {
       transform: translateX(-50%);
+    }
+  }
+
+  
+  /* ---- responsive ---- */
+  @media (max-width: 768px) {
+    .home-trainingen {
+      grid-template-columns: 1fr;
+    }
+
+    .home-trainingen .img-wrapper {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .home-acteren {
+      grid-template-columns: 1fr;
+    }
+
+    .home-acteren .img-wrapper {
+      order: 2;
+    }
+
+    .home-content-blok {
+      order: 1;
+    }
+
+    .blog-thumbs-wrapper {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>
