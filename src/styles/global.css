@@ -73,11 +73,14 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
-h3, h4, h5, h6{
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: 1rem;
 }
 
-.heading-style-h1-display{
+.heading-style-h1-display {
   font-size: 5.5rem;
   font-weight: 600;
   line-height: 1;
@@ -91,7 +94,7 @@ h3, h4, h5, h6{
   margin-bottom: 1.5rem;
 }
 
-a{
+a {
   text-decoration: none;
   color: var(--color-black);
 }
@@ -124,7 +127,7 @@ q {
   quotes: none;
 }
 
-blockquote{
+blockquote {
   border-left: 5px solid #e2e2e2;
   margin-bottom: 1.5rem;
   padding: 10px 20px;
@@ -205,8 +208,8 @@ button {
   /* color: white; */
 }
 
-.button-second:hover{
-    background-color: var(--color-black);
+.button-second:hover {
+  background-color: var(--color-black);
   color: white;
 }
 
@@ -247,6 +250,19 @@ button {
   break-before: column;
 }
 
-.max-width-large{
+.max-width-large {
   max-width: 48rem;
+}
+
+@media (max-width: 768px) {
+  .multi-column-text {
+    column-count: 1;
+  }
+  .heading-style-h1-display{
+    font-size: 3.5rem;
+  }
+
+  .break-column {
+  break-before: avoid;
+}
 }

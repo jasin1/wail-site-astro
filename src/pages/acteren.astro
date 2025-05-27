@@ -19,20 +19,29 @@ import Testimonials from "../components/Testimonials.astro";
               interactieve praktische werkwijze!
             </h2>
             <p class="max-width-large">
-              Ontdek hoe je jouw team weerbaarder maakt met laagdrempelige, praktische oefeningen waarin ik als trainingsacteur realistische scenario’s neerzet.
-              <br/>
-              <br/>
+              Ontdek hoe je jouw team weerbaarder maakt met laagdrempelige,
+              praktische oefeningen waarin ik als trainingsacteur realistische
+              scenario’s neerzet.
+              <br />
+              <br />
 
-Of het nu gaat om een gesprek met een leerling die begrensd moet worden, een gijzelingssimulatie, een feedbackgesprek of een geëmotioneerde klant in de supermarkt, mijn brede ervaring stelt me in staat om uiteenlopende gedragingen geloofwaardig neer te zetten. Mijn aanpak is toegankelijk en effectief.
-<br/><br/>
+              Of het nu gaat om een gesprek met een leerling die begrensd moet
+              worden, een gijzelingssimulatie, een feedbackgesprek of een
+              geëmotioneerde klant in de supermarkt, mijn brede ervaring stelt
+              me in staat om uiteenlopende gedragingen geloofwaardig neer te
+              zetten. Mijn aanpak is toegankelijk en effectief.
+              <br /><br />
 
-Dankzij mijn achtergrond als trainer en mijn expertise in communicatie en psychologie, kijk ik verder dan het oppervlakkige gedrag. Ik voorzie je van waardevolle, complete feedback waarmee jij je vaardigheden kunt ontwikkelen en een nóg productievere professional wordt.
-‍<br/><br/>
-Klaar om impact te maken? Laten we samen aan de slag gaan!
+              Dankzij mijn achtergrond als trainer en mijn expertise in
+              communicatie en psychologie, kijk ik verder dan het oppervlakkige
+              gedrag. Ik voorzie je van waardevolle, complete feedback waarmee
+              jij je vaardigheden kunt ontwikkelen en een nóg productievere
+              professional wordt. ‍<br /><br />
+              Klaar om impact te maken? Laten we samen aan de slag gaan!
             </p>
           </div>
           <div class="act-img">
-            <img src="/images/trainingen-02.jpg" alt="">
+            <img src="/images/trainingen-02.jpg" alt="" />
           </div>
         </div>
       </div>
@@ -42,11 +51,11 @@ Klaar om impact te maken? Laten we samen aan de slag gaan!
 </BaseLayout>
 
 <style>
-  .act-section{
-     background-color: var(--color-bg-light);
-     padding: 6rem 0;
+  .act-section {
+    background-color: var(--color-bg-light);
+    padding: 6rem 0;
   }
-  .act-content-wrapper{
+  .act-content-wrapper {
     display: flex;
     flex-direction: row;
     gap: 2rem;
@@ -55,7 +64,7 @@ Klaar om impact te maken? Laten we samen aan de slag gaan!
     width: 100%;
     max-width: 100%;
   }
-  .act-content{
+  .act-content {
     flex: 3;
     display: flex;
     flex-direction: column;
@@ -63,13 +72,31 @@ Klaar om impact te maken? Laten we samen aan de slag gaan!
     align-items: flex-start;
     width: 100%;
   }
-  .act-img{
+  .act-img {
     max-height: 700px;
     flex: 2;
   }
-  .act-img img{
+  .act-img img {
     max-width: 100%;
     height: auto;
     display: block;
+  }
+
+  @media (max-width: 990px) {
+    .act-content-wrapper {
+      flex-direction: column;
+    }
+    .act-img {
+      /* flex: 1; */
+      /* width: 100%; */
+    }
+    .act-img img {
+      width: 100%;
+      height: auto;
+      max-height: 440px;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
   }
 </style>

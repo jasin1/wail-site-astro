@@ -60,10 +60,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="divider"></div>
           <div class="footer-socials">
             <div class="socialIcon">
-              <a
-                href="https://www.instagram.com/wailalami_/"
-                target="_blank"
-              >
+              <a href="https://www.instagram.com/wailalami_/" target="_blank">
                 <svg
                   width="19"
                   height="18"
@@ -80,7 +77,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
               </a>
             </div>
             <div class="socialIcon">
-              <a href="https://nl.linkedin.com/in/wail-alami-336199206" target="_blank">
+              <a
+                href="https://nl.linkedin.com/in/wail-alami-336199206"
+                target="_blank"
+              >
                 <svg
                   width="19"
                   height="18"
@@ -121,14 +121,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     gap: 2.5rem;
     flex-direction: row;
     padding: 4rem 0;
+    align-items: center;
   }
 
   .over-mij-image-wrapper {
-    object-fit: contain;
-    height: 520px;
+    flex: 2;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .over-mij-main-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 0.5rem;
   }
 
   .over-mij-heading-wrapper {
+    flex: 1;
     padding-top: 1.5rem;
   }
 
@@ -142,5 +153,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     margin-bottom: 4rem;
   }
 
+  @media (max-width: 990px) {
+    .over-mij-header {
+      flex-direction: column;
+      padding: 2rem 0;
+    }
 
+    .over-mij-image-wrapper,
+    .over-mij-heading-wrapper {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .heading-style-h1-alt {
+      font-size: 2.4rem;
+      text-align: center;
+    }
+
+    .over-mij-main-img {
+      width: 100%;
+      height: auto;
+    }
+  }
 </style>

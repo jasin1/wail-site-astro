@@ -130,5 +130,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .blog-thumb-content h3{
     margin-bottom: 1.5rem;
   }
+
+  @media (max-width: 880px) {
+      .main-blog-thumb {
+        grid-template-columns: 1fr;
+      }
+  }
+
+  @media (max-width: 768px) {
+    .blog-page-header{
+      max-width: 100%;
+    }
+    .blog-thumbs-collection{
+      grid-template-columns: 1fr;
+    }
+  }
   
 </style>

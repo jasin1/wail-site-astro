@@ -213,4 +213,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     line-height: 1.42857;
     display: block;
   }
+
+  @media (max-width: 1200px) {
+    .contact-content {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .contact-content {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .form-inputs-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

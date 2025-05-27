@@ -60,13 +60,13 @@ import Hero from "../components/Hero.astro";
     <div class="wrapper">
       <div class="training-gallery-wrapper">
         <div class="gallery-item grid-item-1">
-          <img class="gallery-img" src="/images/trainingen-01.jpg" alt="" />
+          <img class="gallery-img top-focus" src="/images/trainingen-01.jpg" alt="" />
         </div>
         <div class="gallery-item grid-item-2">
-          <img class="gallery-img" src="/images/trainingen-02.jpg" alt="" />
+          <img class="gallery-img center-focus" src="/images/trainingen-02.jpg" alt="" />
         </div>
         <div class="gallery-item grid-item-3">
-          <img class="gallery-img" src="/images/trainingen-03.jpg" alt="" />
+          <img class="gallery-img top-focus" src="/images/trainingen-03.jpg" alt="" />
         </div>
       </div>
     </div>
@@ -131,12 +131,45 @@ import Hero from "../components/Hero.astro";
     justify-self: auto;
   }
 
-  .gallery-img{
+  .gallery-img {
     object-fit: cover;
     border-radius: 12px;
     height: 100%;
     display: block;
     vertical-align: middle;
     max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .training-gallery-wrapper {
+      grid-template-columns: 1fr;
+      grid-template-areas: none;
+      grid-auto-flow: row;
+    }
+    .grid-item-1,
+    .grid-item-2,
+    .grid-item-3 {
+      grid-area: auto;
+    }
+
+    .gallery-img {
+      height: 100%; /* Pas dit aan naar wens */
+      max-height: 240px;
+      object-fit: cover;
+      /* object-position: top; */
+      display: block;
+    }
+
+    .top-focus {
+      object-position: top;
+    }
+
+    .center-focus {
+      object-position: center;
+    }
   }
 </style>

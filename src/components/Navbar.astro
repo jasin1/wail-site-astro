@@ -54,6 +54,12 @@ const currentPath = url.pathname;
 
 <style>
   /* ------- responsive menu--------- */
+  .nav-wrapper {
+    background-color: var(--color-bg-dark);
+    color: var(--color-white);
+    position: relative;
+    z-index: 1002;
+  }
 
   .hamburger {
     display: none;
@@ -118,13 +124,14 @@ const currentPath = url.pathname;
       padding: 2rem;
       position: absolute;
       top: 80px;
-      height: 100%;
+      height: 100vh;
       right: 0;
       left: 0;
       animation: slideDown 0.3s ease forwards;
+      z-index: 1002;
     }
 
-    .mobile-menu li a{
+    .mobile-menu li a {
       font-size: 1.4rem;
     }
   }
