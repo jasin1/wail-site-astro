@@ -1,5 +1,7 @@
 ---
-
+import "keen-slider/keen-slider.min.css";
+// import initKeenSlider from "../scripts/initKeenSlider.js";
+import { testimonialsData } from "../data/testimonials";
 ---
 
 <section class="testimonials">
@@ -10,14 +12,14 @@
     </div>
 
     <div class="slides-btn-wrapper">
-      <button class="slider-btn">
+      <button class="slider-btn prev">
         <img
           src="/images/testimonials/left-arrow.svg"
           alt=""
           class="slider-btn-img"
         />
       </button>
-      <button class="slider-btn">
+      <button class="slider-btn next">
         <img
           src="/images/testimonials/right-arrow.svg"
           alt=""
@@ -25,41 +27,58 @@
         />
       </button>
     </div>
-    <div class="slides-container">
-      <div class="slide">
-        <div class="test-score">
-          <img src="/images/testimonials/star.svg" alt="" class="img-no-radius"/>
-          <img src="/images/testimonials/star.svg" alt="" class="img-no-radius"/>
-          <img src="/images/testimonials/star.svg" alt="" class="img-no-radius"/>
-          <img src="/images/testimonials/star.svg" alt="" class="img-no-radius"/>
-          <img src="/images/testimonials/star.svg" alt="" class="img-no-radius"/>
-        </div>
-        <div class="test-text-wrapper">
-          <p>
-            Ik heb het genoegen mogen hebben om als trainer zijnde te werken met Wail. Zijn professionele houding, ervaring en kennis sprongen uit het oog en vielen dan ook in de meest positieve zin op. De feedback die hij geeft tijdens een training is waardevol en ook iets waar een cursist echt wat mee kan.
-            <br>
-            Ik heb Wail later ook als workshopleider, spreker en trainer in actie mogen zien, dit was fenomenaal! Hij weet zijn doelgroep te binden, de aandacht vast te houden en vooral impact te maken op de groepen waar hij voor staat.
-            <br>
-            Wail durft zich kwetsbaar op te stellen en heeft het nodige meegemaakt in zijn leven wat hij dan ook meeneemt in zijn werk.
-            <br>
-            Ik kijk uit naar onze volgende samenwerking!
-          </p>
-        </div>
-        <div class="test-avatar-content">
-          <div class="test-avatar-wrapper">
-            <img src="/images/testimonials/testimonials_avatar_empty.svg" alt="" class="img-no-radius"/>          
+    <div class="keen-slider slides-container">
+      {
+        testimonialsData.map((item) => (
+          <div class="keen-slider__slide slide">
+            <div class="test-score">
+              {Array.from({ length: item.stars }).map(() => (
+                <img
+                  src="/images/testimonials/star.svg"
+                  alt=""
+                  class="img-no-radius"
+                />
+              ))}
+            </div>
+            <div class="test-text-wrapper">
+              <p>{item.text}</p>
+            </div>
+            <div class="test-avatar-content">
+              <div class="test-avatar-wrapper">
+                <img
+                  src={
+                    item.avatar ||
+                    "/images/testimonials/testimonials_avatar_empty.svg"
+                  }
+                  alt={`Avatar van ${item.name}`}
+                  class="img-no-radius"
+                />
+              </div>
+              <div class="test-avatar-titel">
+                <h4>{item.name}</h4>
+                <p>{item.date}</p>
+              </div>
+            </div>
           </div>
-          <div class="test-avatar-titel">
-            <h4>Name Person</h4>
-            <p>Oktober 14, 2023</p>
-          </div>
-
-        </div>
-
-      </div>
+        ))
+      }
     </div>
   </div>
 </section>
+
+<script>
+  import keenSlider from "keen-slider";
+  const slider = new keenSlider('.keen-slider', {
+    loop: true,
+    slides: {
+      perView: 1,
+      spacing: 15,
+    },
+  });
+
+  document.querySelector('.slider-btn.prev')?.addEventListener('click', () => slider.prev());
+  document.querySelector('.slider-btn.next')?.addEventListener('click', () => slider.next());
+</script>
 
 <style>
   .testimonials {
@@ -72,10 +91,10 @@
     margin-bottom: 2.5rem;
   }
 
-  .test-score{
+  .test-score {
     margin-bottom: 1.5rem;
     display: flex;
-    gap: .4rem;
+    gap: 0.4rem;
   }
 
   .slides-btn-wrapper {
@@ -92,27 +111,38 @@
     width: 3.75rem;
   }
 
-  .test-avatar-content{
+  .test-avatar-content {
     display: flex;
     gap: 1rem;
     align-items: center;
   }
 
-  .test-avatar-wrapper{
+  .test-avatar-wrapper {
     width: 57px;
   }
 
-  .test-text-wrapper{
+  .test-text-wrapper {
     margin-bottom: 2rem;
   }
 
-  .test-text-wrapper p{
+  .test-text-wrapper p {
     max-width: 64ch;
   }
 
-  .test-avatar-titel h4{
-    margin-bottom: .3rem;
+  .test-avatar-titel h4 {
+    margin-bottom: 0.3rem;
   }
 
+  /* .keen-slider__slide {
+    border: 1px dashed limegreen;
+  } */
 
+  .keen-slider {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .keen-slider__slide {
+    min-width: 100%;
+  }
 </style>
