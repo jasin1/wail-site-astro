@@ -4,7 +4,7 @@ import "../styles/global.css";
 import Testimonials from "../components/Testimonials.astro";
 import { HomePageData } from "../data/HomePageData";
 
-const { headerText, introHeader, introBody } = HomePageData[0];
+const { headerText, introHeader, introBody, trainingen, acteren } = HomePageData[0];
 ---
 
 <BaseLayout title="Home" description="Homepage Wail Alami">
@@ -43,39 +43,29 @@ const { headerText, introHeader, introBody } = HomePageData[0];
     <div class="wrapper">
       <div class="home-trainingen">
         <div class="home-content-block">
-          <p class="tiny-txt">Trainingen</p>
-          <h2>Trainingen</h2>
+          <p class="tiny-txt">{trainingen.label}</p>
+          <h2>{trainingen.title}</h2>
           <p class="margin-bottom-normal">
-            We hebben allemaal te maken met lastig gedrag en soms zelfs agressie
-            op de werkvloer. Hoe ga je hier professioneel en zelfverzekerd mee
-            om? Daarnaast ervaren we allemaal stress. Maar hoe kun je stress
-            effectief managen en zorgen voor je emotionele welzijn? Op
-            interactieve wijze train ik jouw werknemers en voorzie ik hen van
-            praktische tools om met lastig gedrag, agressie en stress om te gaan
-            en hun emotionele welzijn te versterken
+            {trainingen.description}
           </p>
           <div class="btn-wrapper">
             <a href="/trainingen" class="normal-button">Trainingen</a>
           </div>
         </div>
         <div class="img-wrapper">
-          <img src="/images/wail_home-trainingen.jpg" alt="" class="home-img" />
+          <img src={trainingen.image} alt="" class="home-img" />
         </div>
       </div>
 
       <div class="home-acteren">
         <div class="img-wrapper">
-          <img src="/images/wail_home-acteur.jpg" alt="" class="home-img" />
+          <img src={acteren.image} alt="" class="home-img" />
         </div>
         <div class="home-content-block">
-          <p class="tiny-txt">Trainingsacteren</p>
-          <h2>Trainingsacteur</h2>
+          <p class="tiny-txt">{acteren.label}</p>
+          <h2>{acteren.title}</h2>
           <p class="margin-bottom-normal">
-            Als trainingsacteur draag ik bij aan het verbeteren van de
-            communicatieve vaardigheden van uw werknemers. Met mijn ervaring en
-            educatieve achtergrond beschik ik over alles wat nodig is om
-            diversiteit, maatwerk en plezierige trainingen te bieden, met
-            realistische scenario's die nauw aansluiten op uw werk.
+           {acteren.description}
           </p>
           <div class="btn-wrapper">
             <a href="/acteren" class="normal-button">Trainingsacteur</a>

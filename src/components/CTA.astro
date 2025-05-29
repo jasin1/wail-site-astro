@@ -1,18 +1,18 @@
 ---
 //---start CTA component
+import { CTAdata } from "../data/CTAdata";
+const {CTAheader, CTAbody} = CTAdata[0];
 ---
 
 <div class="CTA-wrapper">
   <div class="wrapper">
     <div class="CTA-container">
       <div class="quote-wrapper">
-        <q> Samen groeien begint bij contact maken. </q>
+        <q> {CTAheader}</q>
       </div>
       <div class="cta-content">
         <p>
-          Meld je aan voor mijn mail lijst waarin ik informatie deel over nieuwe
-          blogs, zelfontwikkeling, gezondheid, boeken en/of gewoon waar ik me
-          mee bezig houd.
+          {CTAbody}
         </p>
         <a href="/contact" class="normal-button button-second">Contact</a>
       </div>
