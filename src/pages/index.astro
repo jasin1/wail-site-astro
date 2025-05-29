@@ -4,6 +4,10 @@ import "../styles/global.css";
 import Testimonials from "../components/Testimonials.astro";
 import { HomePageData } from "../data/HomePageData";
 
+import { getHomepageContent } from '../lib/getHomepageContent.js';
+
+const homepage = await getHomepageContent(true);
+
 const { headerText, introHeader, introBody, trainingen, acteren } = HomePageData[0];
 ---
 
@@ -15,7 +19,10 @@ const { headerText, introHeader, introBody, trainingen, acteren } = HomePageData
           <img class="hero-img" src="/images/wail_main-home-hero.jpg" alt="" />
         </div>
         <div class="hero-side">
-          <h1 class="display-txt">{headerText}</h1>
+          {homepage ?(
+            <h1 class="display-txt">{homepage.headerText}</h1>
+          ):(<p>content not found</p>)}
+          <!-- <h1 class="display-txt">{headerText}</h1> -->
         </div>
       </div>
     </div>
