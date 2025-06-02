@@ -237,6 +237,14 @@ button {
   gap: 0.5rem;
 }
 
+.no-content{
+  color: red;
+}
+
+.p-margin-bottom{
+  margin-bottom: 2rem;
+}
+
 .socialIcon img {
   border-radius: 0 !important;
 }

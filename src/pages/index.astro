@@ -3,12 +3,25 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 import Testimonials from "../components/Testimonials.astro";
 import { HomePageData } from "../data/HomePageData";
-
-import { getHomepageContent } from '../lib/getHomepageContent.js';
+import { getHomepageContent } from "../lib/getHomepageContent.js";
+import { splitParagraphs } from "../utils/splitParagraphs.js";
 
 const homepage = await getHomepageContent(true);
 
-const { headerText, introHeader, introBody, trainingen, acteren } = HomePageData[0];
+const intro =
+  homepage && typeof homepage.introBody == "string"
+    ? splitParagraphs(homepage.introBody)
+    : [];
+const trainingenText =
+  homepage && typeof homepage.trainingenBodyText == "string"
+    ? splitParagraphs(homepage.trainingenBodyText)
+    : [];
+const { headerText, introHeader, introBody, trainingen, acteren } =
+  HomePageData[0];
+
+console.log(homepage);
+
+
 ---
 
 <BaseLayout title="Home" description="Homepage Wail Alami">
@@ -19,23 +32,34 @@ const { headerText, introHeader, introBody, trainingen, acteren } = HomePageData
           <img class="hero-img" src="/images/wail_main-home-hero.jpg" alt="" />
         </div>
         <div class="hero-side">
-          {homepage ?(
-            <h1 class="display-txt">{homepage.headerText}</h1>
-          ):(<p>content not found</p>)}
-          <!-- <h1 class="display-txt">{headerText}</h1> -->
+          {
+            homepage ? (
+              <h1 class="display-txt">{homepage.headerText}</h1>
+            ) : (
+              <p>content not found</p>
+            )
+          }
         </div>
       </div>
     </div>
   </section>
   <section class="home-intro">
     <div class="wrapper">
-      <h2>{introHeader}</h2>
+      {
+        homepage ? (
+          <h2>{homepage.introHeader}</h2>
+        ) : (
+          <p class="no-content">content not found</p>
+        )
+      }
       <div class="home-intro-text">
-        {introBody.map((para)=>(
-          <p class="text-base">{para}</p>
-        ))}
-
-
+        {
+          intro.length > 0 ? (
+            intro.map((p) => <p>{p}</p>)
+          ) : (
+            <p>Content not found </p>
+          )
+        }
       </div>
       <div class="link-wrapper">
         <a href="https://www.crkbo.nl/" class="crkbo-link" target="_blank">
@@ -50,16 +74,35 @@ const { headerText, introHeader, introBody, trainingen, acteren } = HomePageData
     <div class="wrapper">
       <div class="home-trainingen">
         <div class="home-content-block">
-          <p class="tiny-txt">{trainingen.label}</p>
-          <h2>{trainingen.title}</h2>
+          {
+            homepage ? (
+              <p class="tiny-txt">{homepage.labelTrainingen}</p>
+            ) : (
+              <p class="no-content">content not found</p>
+            )
+          }
+          {
+            homepage ? (
+              <h2>{homepage.titleTrainingen}</h2>
+            ) : (
+              <p class="no-content">content not found</p>
+            )
+          }
           <p class="margin-bottom-normal">
-            {trainingen.description}
+            {
+              trainingenText.length > 0 ? (
+                trainingenText.map((p) => <p class="p-margin-bottom">{p}</p>)
+              ) : (
+                <p>Content not found </p>
+              )
+            }
           </p>
           <div class="btn-wrapper">
             <a href="/trainingen" class="normal-button">Trainingen</a>
           </div>
         </div>
         <div class="img-wrapper">
+          <!-- Trainingen Image -->
           <img src={trainingen.image} alt="" class="home-img" />
         </div>
       </div>
@@ -72,7 +115,7 @@ const { headerText, introHeader, introBody, trainingen, acteren } = HomePageData
           <p class="tiny-txt">{acteren.label}</p>
           <h2>{acteren.title}</h2>
           <p class="margin-bottom-normal">
-           {acteren.description}
+            {acteren.description}
           </p>
           <div class="btn-wrapper">
             <a href="/acteren" class="normal-button">Trainingsacteur</a>
@@ -290,16 +333,18 @@ const { headerText, introHeader, introBody, trainingen, acteren } = HomePageData
 </BaseLayout>
 
 <style>
-
-  .text-base{
+  .text-base {
     margin-bottom: 2rem;
   }
 
-  .link-wrapper .img-wrapper{
+  .link-wrapper .img-wrapper {
     width: 7.5rem;
     height: 7.5rem;
   }
 
+  .home-intro-text p {
+    margin-bottom: 1.5rem;
+  }
 
   /* --------- Blog section ------------- */
 
@@ -495,7 +540,6 @@ const { headerText, introHeader, introBody, trainingen, acteren } = HomePageData
     }
   }
 
-  
   /* ---- responsive ---- */
   @media (max-width: 768px) {
     .home-trainingen {
