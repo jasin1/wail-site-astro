@@ -5,6 +5,7 @@ import Testimonials from "../components/Testimonials.astro";
 import { HomePageData } from "../data/HomePageData";
 import { getHomepageContent } from "../lib/getHomepageContent.js";
 import { splitParagraphs } from "../utils/splitParagraphs.js";
+import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
 
 const homepage = await getHomepageContent(true);
 
@@ -16,11 +17,26 @@ const trainingenText =
   homepage && typeof homepage.trainingenBodyText == "string"
     ? splitParagraphs(homepage.trainingenBodyText)
     : [];
+
+const acterenBodyText =
+  homepage && typeof homepage.acterenBodyText == "string"
+    ? splitParagraphs(homepage.acterenBodyText)
+    : [];
+
 const { headerText, introHeader, introBody, trainingen, acteren } =
   HomePageData[0];
 
+const TrainingenImage = homepage?.trainingenImage
+  ? processImageAsset(homepage.trainingenImage)
+  : null;
+
+const ActerenImage = homepage?.acterenImage
+  ? processImageAsset(homepage.acterenImage)
+  : null;
+
 console.log(homepage);
 
+console.log("TrainingenImage raw:", homepage?.trainingenImage);
 
 ---
 
@@ -103,19 +119,54 @@ console.log(homepage);
         </div>
         <div class="img-wrapper">
           <!-- Trainingen Image -->
-          <img src={trainingen.image} alt="" class="home-img" />
+          {
+            TrainingenImage && (
+              <img
+                src={TrainingenImage.url}
+                alt={TrainingenImage.alt}
+                class="home-img"
+              />
+            )
+          }
         </div>
       </div>
 
       <div class="home-acteren">
         <div class="img-wrapper">
-          <img src={acteren.image} alt="" class="home-img" />
+          {
+            ActerenImage && (
+              <img
+                src={ActerenImage.url}
+                alt={ActerenImage.alt}
+                class="home-img"
+              />
+            )
+          }
+
         </div>
         <div class="home-content-block">
-          <p class="tiny-txt">{acteren.label}</p>
-          <h2>{acteren.title}</h2>
+          {
+            homepage ? (
+              <p class="tiny-txt">{homepage.labelActeren}</p>
+            ) : (
+              <p class="no-content">content not found</p>
+            )
+          }
+          {
+            homepage ? (
+              <h2>{homepage.titelActeren}</h2>
+            ) : (
+              <p class="no-content">content not found</p>
+            )
+          }
           <p class="margin-bottom-normal">
-            {acteren.description}
+            {
+              acterenBodyText.length > 0 ? (
+                acterenBodyText.map((p) => <p class="p-margin-bottom">{p}</p>)
+              ) : (
+                <p>Content not found </p>
+              )
+            }
           </p>
           <div class="btn-wrapper">
             <a href="/acteren" class="normal-button">Trainingsacteur</a>
