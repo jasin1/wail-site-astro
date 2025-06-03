@@ -1,7 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { OverMijData } from "../data/OverMijData";
-const { HeaderText, HeaderImg, MultiColumnBody } = OverMijData[0];
+import { getSingleEntry } from "../lib/getContentfulEntry";
+import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
+import { renderRichText } from "../utils/renderRichText";
+
+const overMijContent = await getSingleEntry("overMij");
+
+const headerImage = overMijContent?.headerImage
+  ? processImageAsset(overMijContent.headerImage)
+  : null;
+
+const rawRichText = overMijContent?.mainText;
+const richTextHtml = rawRichText ? renderRichText(rawRichText) : "";
+
+// console.log(richTextHtml);
+
 ---
 
 <BaseLayout title="over-mij" description="Over mij">
@@ -9,28 +22,27 @@ const { HeaderText, HeaderImg, MultiColumnBody } = OverMijData[0];
     <div class="wrapper">
       <div class="over-mij-header">
         <div class="over-mij-image-wrapper">
-          <img
-            class="over-mij-main-img"
-            src={HeaderImg}
-            alt=""
-          />
+          {
+            headerImage && (
+              <img class="over-mij-main-img" src={headerImage.url} alt="" />
+            )
+          }
         </div>
         <div class="over-mij-heading-wrapper">
-          <h1 class="heading-style-h1-alt">
-            {HeaderText}
-          </h1>
+          {
+            overMijContent ? (
+              <h1 class="heading-style-h1-alt">{overMijContent.headerText}</h1>
+            ) : (
+              <p>content not found</p>
+            )
+          }
         </div>
       </div>
     </div>
     <div class="wrapper">
       <div class="sub-content-block">
         <div class="multi-column-text">
-          <p>
-            {MultiColumnBody.left}
-          </p>
-          <p class="break-column">
-         {MultiColumnBody.right}
-          </p>
+          <div class="column" set:html={richTextHtml} />
           <div class="divider"></div>
           <div class="footer-socials">
             <div class="socialIcon">

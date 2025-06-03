@@ -1,19 +1,28 @@
 ---
 //---start CTA component
-import { CTAdata } from "../data/CTAdata";
-const {CTAheader, CTAbody} = CTAdata[0];
+import { getSingleEntry } from "../lib/getContentfulEntry.js";
+const ctaContent = await getSingleEntry('cta');
+
 ---
 
 <div class="CTA-wrapper">
   <div class="wrapper">
     <div class="CTA-container">
       <div class="quote-wrapper">
-        <q> {CTAheader}</q>
+                {
+          ctaContent ? (
+            <q>{ctaContent.quote}</q>
+          ) : (<p>content not found</p>)
+        }
+        <!-- <q> {CTAheader}</q> -->
       </div>
       <div class="cta-content">
-        <p>
+        {
+          ctaContent ?(<p>{ctaContent.ctaBodyText}</p>) : (<p>content not found</p>)
+        }
+        <!-- <p>
           {CTAbody}
-        </p>
+        </p> -->
         <a href="/contact" class="normal-button button-second">Contact</a>
       </div>
     </div>

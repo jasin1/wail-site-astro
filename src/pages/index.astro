@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 import Testimonials from "../components/Testimonials.astro";
-import { HomePageData } from "../data/HomePageData";
 import { getHomepageContent } from "../lib/getHomepageContent.js";
 import { splitParagraphs } from "../utils/splitParagraphs.js";
 import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
@@ -23,9 +22,6 @@ const acterenBodyText =
     ? splitParagraphs(homepage.acterenBodyText)
     : [];
 
-const { headerText, introHeader, introBody, trainingen, acteren } =
-  HomePageData[0];
-
 const TrainingenImage = homepage?.trainingenImage
   ? processImageAsset(homepage.trainingenImage)
   : null;
@@ -34,9 +30,8 @@ const ActerenImage = homepage?.acterenImage
   ? processImageAsset(homepage.acterenImage)
   : null;
 
-console.log(homepage);
-
-console.log("TrainingenImage raw:", homepage?.trainingenImage);
+// console.log(homepage);
+// console.log("TrainingenImage raw:", homepage?.trainingenImage);
 
 ---
 

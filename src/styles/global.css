@@ -254,6 +254,10 @@ button {
   column-gap: 2rem;
 }
 
+.column p{
+  margin-bottom: 1.5rem;
+}
+
 .break-column {
   break-before: column;
 }

@@ -1,6 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
+import Testimonials from "../components/Testimonials.astro";
+import { getSingleEntry } from "../lib/getContentfulEntry";
+import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
+import { renderRichText } from "../utils/renderRichText";
 ---
 
 <BaseLayout title="trainingen" description="trainingen">
@@ -60,16 +64,29 @@ import Hero from "../components/Hero.astro";
     <div class="wrapper">
       <div class="training-gallery-wrapper">
         <div class="gallery-item grid-item-1">
-          <img class="gallery-img top-focus" src="/images/trainingen-01.jpg" alt="" />
+          <img
+            class="gallery-img top-focus"
+            src="/images/trainingen-01.jpg"
+            alt=""
+          />
         </div>
         <div class="gallery-item grid-item-2">
-          <img class="gallery-img center-focus" src="/images/trainingen-02.jpg" alt="" />
+          <img
+            class="gallery-img center-focus"
+            src="/images/trainingen-02.jpg"
+            alt=""
+          />
         </div>
         <div class="gallery-item grid-item-3">
-          <img class="gallery-img top-focus" src="/images/trainingen-03.jpg" alt="" />
+          <img
+            class="gallery-img top-focus"
+            src="/images/trainingen-03.jpg"
+            alt=""
+          />
         </div>
       </div>
     </div>
+    <Testimonials />
   </section>
 </BaseLayout>
 
