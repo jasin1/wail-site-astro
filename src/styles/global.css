@@ -266,6 +266,11 @@ button {
   max-width: 48rem;
 }
 
+.max-width-large >p{
+  margin-bottom: 1.5rem;
+}
+
+
 @media (max-width: 768px) {
   .multi-column-text {
     column-count: 1;

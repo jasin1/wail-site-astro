@@ -5,43 +5,47 @@ import Testimonials from "../components/Testimonials.astro";
 import { getSingleEntry } from "../lib/getContentfulEntry";
 import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
 import { renderRichText } from "../utils/renderRichText";
+
+const trainingen = await getSingleEntry("trainingen");
+const heroImage = trainingen?.heroImage
+  ? processImageAsset(trainingen.heroImage)
+  : null;
+
+const trainingImage01 = trainingen?.trainingImage01
+  ? processImageAsset(trainingen.trainingImage01)
+  : null;
+const trainingImage02 = trainingen?.trainingImage02
+  ? processImageAsset(trainingen.trainingImage02)
+  : null;
+const trainingImage03 = trainingen?.trainingImage03
+  ? processImageAsset(trainingen.trainingImage03)
+  : null;
+
+const rawRichText = trainingen?.bodyText;
+const richTextHtml = rawRichText ? renderRichText(rawRichText) : "";
+
+console.log(trainingen);
+console.log(richTextHtml);
 ---
 
 <BaseLayout title="trainingen" description="trainingen">
-  <Hero backgroundImage="/images/trainingen-hero.jpg" title="Trainingen" />
+  <Hero
+    backgroundImage={heroImage?.url}
+    title={trainingen ? trainingen.headerText : "content not found"}
+  />
   <section>
     <div class="wrapper">
       <div class="intro-grid">
         <div class="intro-indict">
-          <p class="tiny-txt">Trainingen</p>
+          <p class="tiny-txt">
+            {trainingen ? trainingen.labelText :"content not found"}
+          </p>
         </div>
         <div class="intro-content-wrapper">
           <h2 class="heading-style-h2">
-            Maak jouw team weerbaarder met bewezen methoden op een interactieve
-            praktische werkwijze!
+            {trainingen ? trainingen.subHeaderText : "content not found"}
           </h2>
-          <div class="multi-column-text">
-            <p>
-              Stress kan niet alleen je productiviteit verlagen, maar ook op
-              lange termijn leiden tot gezondheidsproblemen. Met mijn trainingen
-              help ik je team om weerbaarder te worden tegen lastig gedrag,
-              agressie, emoties effectiever te beheren en spanning beter te
-              reguleren. Dit draagt bij aan een verbetering van de werksfeer,
-              verhoogde prestaties en een gezondere werkcultuur. Ik heb al met
-              verschillende gerenommeerde organisaties samengewerkt, zoals het
-              UWV, Albert Heijn, de Politie, Gemeente Amsterdam, het COA,
-              verschillende scholen en meer. Deze ervaring heeft me geholpen te
-              begrijpen dat verschillende organisaties met hetzelfde gedrag te
-              maken hebben, dat zich op verschillende manieren kan uiten, maar
-              vaak dezelfde aanpak vereist. Ik weet wat nodig is om jouw team de
-              juiste handvatten te geven om de communicatie te verbeteren en
-              de-escaleren in spanningsvolle situaties.Ontdek mijn aanbod en
-              laat me je team begeleiden naar een weerbaardere en stressvrijere
-              toekomst!
-              <br />
-              <strong>Bekijk hieronder mijn aanpak.</strong>
-            </p>
-          </div>
+          <div class="multi-column-text" set:html={richTextHtml} />
         </div>
       </div>
     </div>
@@ -49,13 +53,9 @@ import { renderRichText } from "../utils/renderRichText";
   <section class="promo">
     <div class="promo-content-wrapper">
       <p class="tiny-txt">Trainingen</p>
-      <h2>Weerbaarheid en spanningsregulatie</h2>
+      <h2>{trainingen ? trainingen.promoHeaderText : "content not found"}</h2>
       <p>
-        Mijn interactieve, op maat gemaakte praktische trainingen zitten vol
-        eenvoudige, maar krachtige tools die je direct kunt toepassen. Leer
-        effectiever communiceren, zelfverzekerder grenzen stellen en je
-        stressniveaus reguleren. Laat je verrijken door praktische inzichten en
-        ontdek de sleutels tot een weerbaardere stressvrijere team.
+        {trainingen ? trainingen.promoBodyText : "content not found"}
       </p>
       <a href="/contact" class="normal-button">Contact</a>
     </div>
@@ -64,25 +64,34 @@ import { renderRichText } from "../utils/renderRichText";
     <div class="wrapper">
       <div class="training-gallery-wrapper">
         <div class="gallery-item grid-item-1">
-          <img
-            class="gallery-img top-focus"
-            src="/images/trainingen-01.jpg"
-            alt=""
-          />
+          {
+            trainingImage01 && (
+              <img
+                class="gallery-img top-focus"
+                src={trainingImage01.url}
+                alt=""
+              />
+            )
+          }
         </div>
         <div class="gallery-item grid-item-2">
-          <img
-            class="gallery-img center-focus"
-            src="/images/trainingen-02.jpg"
-            alt=""
-          />
+          {
+            trainingImage02 &&(
+              <img
+                class="gallery-img center-focus"
+                src={trainingImage02.url}
+                alt=""
+              />
+            )
+          }
         </div>
         <div class="gallery-item grid-item-3">
-          <img
+          {
+          trainingImage03 &&(<img
             class="gallery-img top-focus"
-            src="/images/trainingen-03.jpg"
+            src={trainingImage03.url}
             alt=""
-          />
+          />)}
         </div>
       </div>
     </div>

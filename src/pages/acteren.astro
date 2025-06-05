@@ -2,23 +2,37 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import Testimonials from "../components/Testimonials.astro";
+import { getSingleEntry } from "../lib/getContentfulEntry";
+import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
+import { renderRichText } from "../utils/renderRichText";
+
+const acteren = await getSingleEntry("acterenPage");
+const heroImage = acteren?.heroImage ? processImageAsset(acteren.heroImage):null;
+
+const mainImage = acteren?.acterenMainImage ? processImageAsset(acteren.acterenMainImage):null;
+
+const rawRichText = acteren?.bodyText;
+const richTextHtml = rawRichText ? renderRichText(rawRichText) : "";
+
+console.log(acteren);
+console.log(richTextHtml);
 ---
 
 <BaseLayout title="acteren" description="acteren">
-  <Hero backgroundImage="/images/acteren-hero.jpg" title="Acteren" />
+  <Hero backgroundImage={heroImage?.url} title={acteren ? acteren.headerText :"content not found"} />
   <section class="act-section">
     <div class="wrapper">
       <div class="act-intro">
         <div class="act-content-wrapper">
           <div class="act-content">
             <div class="intro-indict">
-              <p class="tiny-txt">Acteren</p>
+              <p class="tiny-txt">{acteren ? acteren.labelText : "content not found"}</p>
             </div>
             <h2 class="heading-style-h2">
-              Maak jouw team weerbaarder met bewezen methoden op een
-              interactieve praktische werkwijze!
+              {acteren ? acteren.subHeaderText : "content not found"}
             </h2>
-            <p class="max-width-large">
+            <div class="max-width-large" set:html={richTextHtml}></div>
+            <!-- <p class="max-width-large">
               Ontdek hoe je jouw team weerbaarder maakt met laagdrempelige,
               praktische oefeningen waarin ik als trainingsacteur realistische
               scenario’s neerzet.
@@ -38,10 +52,13 @@ import Testimonials from "../components/Testimonials.astro";
               jij je vaardigheden kunt ontwikkelen en een nóg productievere
               professional wordt. ‍<br /><br />
               Klaar om impact te maken? Laten we samen aan de slag gaan!
-            </p>
+            </p> -->
           </div>
           <div class="act-img">
-            <img src="/images/trainingen-02.jpg" alt="" />
+            {mainImage &&(
+              <img src={mainImage.url} alt="" />
+            )}
+            <!-- <img src="/images/trainingen-02.jpg" alt="" /> -->
           </div>
         </div>
       </div>
