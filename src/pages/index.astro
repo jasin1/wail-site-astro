@@ -5,6 +5,12 @@ import Testimonials from "../components/Testimonials.astro";
 import { getHomepageContent } from "../lib/getHomepageContent.js";
 import { splitParagraphs } from "../utils/splitParagraphs.js";
 import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
+import { getAllBlogPosts } from "../lib/getAllBlogPosts";
+import BlogThumb from "../components/BlogThumb.astro";
+import { undefined } from "astro:schema";
+
+const allPosts = await getAllBlogPosts();
+const latestPosts = allPosts.slice(0, 3);
 
 const homepage = await getHomepageContent(true);
 
@@ -30,9 +36,7 @@ const ActerenImage = homepage?.acterenImage
   ? processImageAsset(homepage.acterenImage)
   : null;
 
-// console.log(homepage);
-// console.log("TrainingenImage raw:", homepage?.trainingenImage);
-
+console.log("Latest posts:", latestPosts);
 ---
 
 <BaseLayout title="Home" description="Homepage Wail Alami">
@@ -137,7 +141,6 @@ const ActerenImage = homepage?.acterenImage
               />
             )
           }
-
         </div>
         <div class="home-content-block">
           {
@@ -298,7 +301,21 @@ const ActerenImage = homepage?.acterenImage
           </p>
         </div>
         <div class="blog-thumbs-wrapper">
-          <div class="blog-thumb-container">
+          {
+            latestPosts &&
+              latestPosts.map((post) => {
+                return(
+                  <BlogThumb
+                    mainImage={post.fields.mainImage?.fields?.file?.url ?? "/images/blog/default.jpg"}
+                    categoryTxt={post.fields.category ?? "Onbekend"}
+                    title={post.fields.title ?? "Geen titel"}
+                    bodyTxt={post.fields.introText ?? "Geen tekst"}
+                    thumbLink={`/blog/${post.fields.slug ?? "#"}`}
+                  />
+                );
+              })
+          }
+          <!-- <div class="blog-thumb-container">
             <a href="" class="blog-thumb">
               <div class="thumb-img-wrapper">
                 <img
@@ -366,7 +383,7 @@ const ActerenImage = homepage?.acterenImage
                 </p>
               </div>
             </a>
-          </div>
+          </div> -->
         </div>
         <div class="home-blog-btn-wrapper">
           <div class="home-btn-wrapper">

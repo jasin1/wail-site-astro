@@ -1,0 +1,59 @@
+---
+const { mainImage, categoryTxt, title, bodyTxt,thumbLink } = Astro.props;
+---
+
+
+  <div class="blog-thumb-container">
+    <a href={thumbLink} class="blog-thumb">
+      <div class="thumb-img-wrapper">
+        <img src={mainImage} alt="" class="thumb-img" />
+      </div>
+      <div class="tiny-txt-wrapper">
+        <p class="tiny-txt">{categoryTxt}</p>
+      </div>
+      <div class="thumb-title-wrapper">
+        <h3>{title}</h3>
+      </div>
+      <div class="thumb-excerpt">
+        <p>{bodyTxt}</p>
+      </div>
+    </a>
+  </div>
+
+
+<style>
+
+  .blog-header {
+    margin-bottom: 2rem;
+  }
+
+  .blog-thumb {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .thumb-img-wrapper {
+    margin-bottom: 1.5rem;
+  }
+
+  .thumb-img {
+    object-fit: cover;
+    border-radius: 12px;
+    max-width: 100%;
+    width: 403px;
+    height: 14rem;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .thumb-title-wrapper {
+    margin-bottom: 1rem;
+  }
+
+  .home-blog-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+</style>
