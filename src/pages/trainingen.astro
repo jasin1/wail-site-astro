@@ -4,7 +4,7 @@ import Hero from "../components/Hero.astro";
 import Testimonials from "../components/Testimonials.astro";
 import { getSingleEntry } from "../lib/getContentfulEntry";
 import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
-import { renderRichText } from "../utils/renderRichText";
+import { renderRichText } from "../utils/renderRichText.js";
 
 const trainingen = await getSingleEntry("trainingen");
 const heroImage = trainingen?.heroImage
@@ -38,7 +38,7 @@ console.log(richTextHtml);
       <div class="intro-grid">
         <div class="intro-indict">
           <p class="tiny-txt">
-            {trainingen ? trainingen.labelText :"content not found"}
+            {trainingen ? trainingen.labelText : "content not found"}
           </p>
         </div>
         <div class="intro-content-wrapper">
@@ -76,7 +76,7 @@ console.log(richTextHtml);
         </div>
         <div class="gallery-item grid-item-2">
           {
-            trainingImage02 &&(
+            trainingImage02 && (
               <img
                 class="gallery-img center-focus"
                 src={trainingImage02.url}
@@ -87,11 +87,14 @@ console.log(richTextHtml);
         </div>
         <div class="gallery-item grid-item-3">
           {
-          trainingImage03 &&(<img
-            class="gallery-img top-focus"
-            src={trainingImage03.url}
-            alt=""
-          />)}
+            trainingImage03 && (
+              <img
+                class="gallery-img top-focus"
+                src={trainingImage03.url}
+                alt=""
+              />
+            )
+          }
         </div>
       </div>
     </div>

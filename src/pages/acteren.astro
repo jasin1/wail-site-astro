@@ -4,12 +4,16 @@ import Hero from "../components/Hero.astro";
 import Testimonials from "../components/Testimonials.astro";
 import { getSingleEntry } from "../lib/getContentfulEntry";
 import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
-import { renderRichText } from "../utils/renderRichText";
+import { renderRichText } from "../utils/renderRichText.js";
 
 const acteren = await getSingleEntry("acterenPage");
-const heroImage = acteren?.heroImage ? processImageAsset(acteren.heroImage):null;
+const heroImage = acteren?.heroImage
+  ? processImageAsset(acteren.heroImage)
+  : null;
 
-const mainImage = acteren?.acterenMainImage ? processImageAsset(acteren.acterenMainImage):null;
+const mainImage = acteren?.acterenMainImage
+  ? processImageAsset(acteren.acterenMainImage)
+  : null;
 
 const rawRichText = acteren?.bodyText;
 const richTextHtml = rawRichText ? renderRichText(rawRichText) : "";
@@ -19,19 +23,24 @@ console.log(richTextHtml);
 ---
 
 <BaseLayout title="acteren" description="acteren">
-  <Hero backgroundImage={heroImage?.url} title={acteren ? acteren.headerText :"content not found"} />
+  <Hero
+    backgroundImage={heroImage?.url}
+    title={acteren ? acteren.headerText : "content not found"}
+  />
   <section class="act-section">
     <div class="wrapper">
       <div class="act-intro">
         <div class="act-content-wrapper">
           <div class="act-content">
             <div class="intro-indict">
-              <p class="tiny-txt">{acteren ? acteren.labelText : "content not found"}</p>
+              <p class="tiny-txt">
+                {acteren ? acteren.labelText : "content not found"}
+              </p>
             </div>
             <h2 class="heading-style-h2">
               {acteren ? acteren.subHeaderText : "content not found"}
             </h2>
-            <div class="max-width-large" set:html={richTextHtml}></div>
+            <div class="max-width-large" set:html={richTextHtml} />
             <!-- <p class="max-width-large">
               Ontdek hoe je jouw team weerbaarder maakt met laagdrempelige,
               praktische oefeningen waarin ik als trainingsacteur realistische
@@ -55,9 +64,7 @@ console.log(richTextHtml);
             </p> -->
           </div>
           <div class="act-img">
-            {mainImage &&(
-              <img src={mainImage.url} alt="" />
-            )}
+            {mainImage && <img src={mainImage.url} alt="" />}
             <!-- <img src="/images/trainingen-02.jpg" alt="" /> -->
           </div>
         </div>

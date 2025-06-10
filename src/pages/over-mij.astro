@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getSingleEntry } from "../lib/getContentfulEntry";
 import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
-import { renderRichText } from "../utils/renderRichText";
+import { renderRichText } from "../utils/renderRichText.js";
 
 const overMijContent = await getSingleEntry("overMij");
 
@@ -14,7 +14,6 @@ const rawRichText = overMijContent?.mainText;
 const richTextHtml = rawRichText ? renderRichText(rawRichText) : "";
 
 // console.log(richTextHtml);
-
 ---
 
 <BaseLayout title="over-mij" description="Over mij">

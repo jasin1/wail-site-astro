@@ -308,7 +308,7 @@ console.log("Latest posts:", latestPosts);
                 return(
                   // @ts-ignore: ContentFul type is too generic; we know post has fields
                   <BlogThumb
-                    mainImage={post.fields.mainImage?.fields?.file?.url ?? "/images/blog/default.jpg"}
+                    mainImage={post.fields.mainImage?.fields?.file?.url ?? "/images/blog/blog-default.svg"}
                     categoryTxt={post.fields.category ?? "Onbekend"}
                     title={post.fields.title ?? "Geen titel"}
                     bodyTxt={post.fields.introText ?? "Geen tekst"}
