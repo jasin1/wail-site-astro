@@ -37,6 +37,7 @@ const ActerenImage = homepage?.acterenImage
   : null;
 
 console.log("Latest posts:", latestPosts);
+
 ---
 
 <BaseLayout title="Home" description="Homepage Wail Alami">
@@ -305,6 +306,7 @@ console.log("Latest posts:", latestPosts);
             latestPosts &&
               latestPosts.map((post) => {
                 return(
+                  // @ts-ignore: ContentFul type is too generic; we know post has fields
                   <BlogThumb
                     mainImage={post.fields.mainImage?.fields?.file?.url ?? "/images/blog/default.jpg"}
                     categoryTxt={post.fields.category ?? "Onbekend"}

@@ -1,14 +1,63 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAllBlogPosts } from "../../lib/getAllBlogPosts";
+import { getBlogPostBySlug } from "../../lib/getBlogPostBySlug";
+import { processImageAsset } from "../../utils/imageHelper";
+import { renderRichText } from "../../utils/renderRichText";
+import {renderBlogRichText} from "../../utils/renderBlogRichText.js";
+
+export async function getStaticPaths() {
+  const posts = await getAllBlogPosts();
+  return posts.map((post) => ({
+    params: { slug: post.fields.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const post = await getBlogPostBySlug(slug);
+
+if (!post) {
+  throw new Error("Blogpost niet gevonden");
+}
+
+const { title, content } = post.fields;
+const bodyHtml = renderBlogRichText(content);
+
+
+// console.log(title);
+
+const mainImg = post?.fields?.mainImage
+  ? processImageAsset(post.fields.mainImage)
+  : null;
+
+console.log(mainImg);
+
+// function renderNode(node: any) {
+//   if (typeof node === "string") return node;
+
+//   const { type, props, children = [] } = node;
+
+//   if (type === "img") {
+//     return <img {...props} class="styledImage" />;
+//   }
+//   if (type === "a") {
+//     return <a {...props} class="styledLink">{children.map(renderNode)}</a>;
+//   }
+//   if (type === "p") {
+//     return <p class="styledParagraph">{children.map(renderNode)}</p>;
+//   }
+//   return <div>{children.map(renderNode)}</div>;
+// }
+
 ---
 
 <BaseLayout title="blog-post" description="blog=post">
   <section class="blog-post-header-wrapper">
     <article class="blog-post-header">
       <div class="blog-img-wrapper">
-        <img src="/images/blog/thumb-hand.jpg" alt="" />
+        {mainImg && <img src={mainImg.url} alt={mainImg.alt} />}
         <div class="overlay"></div>
-        <h1>Pornografie: De duistere waarheid</h1>
+        <h1>{title}</h1>
       </div>
     </article>
   </section>
@@ -83,6 +132,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </div>
       </div>
       <article class="blog-post">
+        <div class="richText">
+          <!-- {Array.isArray(content) && content.map(renderNode)} -->
+           <!-- {bodyHtml && bodyHtml.map(renderNode)} -->
+          <p>dit is richt text</p>
+        </div>
         <h2>Dit is een H2 tag</h2>
         <h3>Dit is een H3</h3>
         <h4>Dit is een h4</h4>
@@ -138,7 +192,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           tellus eu nulla congue, nec dictum ipsum volutpat. Phasellus tincidunt
           orci vel pellentesque consequat.
         </p>
-        <img src="/images/blog/thumb-tunnel.jpg" alt="" class="blogpost-img">
+        <img src="/images/blog/thumb-tunnel.jpg" alt="" class="blogpost-img" />
       </article>
       <div class="blog-post-footer">
         <p>Share this post</p>
@@ -212,6 +266,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </BaseLayout>
 
 <style>
+  /*----- richText -----*/
+  .richText p{
+    margin-bottom: 1.5rem;
+    color: red;
+  }
+
+
+
+  /*-------------------*/
   .blog-post-header-wrapper {
   }
 
@@ -225,8 +288,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     align-items: center;
     width: 100%;
   }
-
-
 
   .blog-nav-link {
     color: #707070;
@@ -295,13 +356,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     max-width: 48rem;
   }
 
-  .blog-post{
+  .blog-post {
     margin-bottom: 4rem;
   }
 
-  .blog-post p {
+  /* .blog-post p {
     margin-bottom: 2rem;
-  }
+  } */
 
   .blog-post ul {
     list-style: disc inside;
@@ -327,7 +388,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     color: var(--color-bg-dark-brown);
   }
 
-  .blog-post-footer{
+  .blog-post-footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -335,19 +396,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     padding-bottom: 3.5rem;
   }
 
-  .blog-post-footer p{
+  .blog-post-footer p {
     font-size: 18px;
     color: #333333;
     font-weight: 600;
     margin-bottom: 1.4rem;
   }
 
-  .blog-footer{
+  .blog-footer {
     justify-content: center;
     align-items: center;
   }
 
-  .blogpost-img{
+  .blogpost-img {
     width: 100%;
     border-radius: 0;
     object-fit: cover;
