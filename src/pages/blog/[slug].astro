@@ -4,6 +4,7 @@ import { getAllBlogPosts } from "../../lib/getAllBlogPosts";
 import { getBlogPostBySlug } from "../../lib/getBlogPostBySlug";
 import { processImageAsset } from "../../utils/imageHelper";
 import { renderRichText } from "../../utils/renderRichText.js";
+
 // import { renderBlogRichText } from "../../utils/renderBlogRichText.js";
 
 export async function getStaticPaths() {
@@ -21,10 +22,8 @@ if (!post) {
 }
 
 const { title, content, introText } = post.fields;
-// const bodyHtml = renderBlogRichText(content);
 const myBody = renderRichText(content);
 
-// console.log(title);
 
 const mainImg = post?.fields?.mainImage
   ? processImageAsset(post.fields.mainImage)
@@ -34,21 +33,25 @@ console.log(mainImg);
 
 //------------ share link --------------//
 
-const currentURL = Astro.url.href;
+const baseURL = import.meta.env.PUBLIC_SITE_URL;
+
+const currentURL = `${baseURL}/blog/${slug}`
 
 const shareURLs ={
-  facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentURL)}&quote=${encodeURIComponent(String(title))}`,
+  facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentURL)}`,
   twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentURL)}&text=${encodeURIComponent(String(title))}`,
-  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentURL)}&title=${encodeURIComponent(String(title))}`
+  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentURL)}`
 }
-// console.log("current URL: ", currentURL);
-// console.log("intro text is :", introText);
-console.log("Share ",shareURLs.twitter);
+console.log(shareURLs);
+console.log('current URL: ',currentURL)
 
-//-------------------------------------//
 ---
 
-<BaseLayout title="blog-post" description="blog=post">
+<BaseLayout 
+title={title} 
+description={introText} 
+ogImage={mainImg?.url} 
+ogUrl={currentURL}>
   <section class="blog-post-header-wrapper">
     <article class="blog-post-header">
       <div class="blog-img-wrapper">
@@ -85,7 +88,7 @@ console.log("Share ",shareURLs.twitter);
                   fill="CurrentColor"></path>
               </svg>
             </div>
-          </a><a href="" class="log-social-share-link">
+          </a><a href={shareURLs.linkedin} target="_blank" class="log-social-share-link">
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -101,7 +104,7 @@ console.log("Share ",shareURLs.twitter);
                   fill="CurrentColor"></path>
               </svg>
             </div>
-          </a><a href="" class="log-social-share-link">
+          </a><a href={shareURLs.twitter} target="_blank" class="log-social-share-link">
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -115,7 +118,7 @@ console.log("Share ",shareURLs.twitter);
                   fill="CurrentColor"></path>
               </svg>
             </div>
-          </a><a href="" class="log-social-share-link">
+          </a><a href={shareURLs.facebook} target="_blank" class="log-social-share-link">
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -154,7 +157,8 @@ console.log("Share ",shareURLs.twitter);
                   fill="CurrentColor"></path>
               </svg>
             </div>
-          </a><a href={shareURLs.linkedin} target="_blank" class="log-social-share-link">
+          </a>
+          <a href={shareURLs.linkedin} target="_blank" class="log-social-share-link">
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -170,7 +174,8 @@ console.log("Share ",shareURLs.twitter);
                   fill="CurrentColor"></path>
               </svg>
             </div>
-          </a><a href={shareURLs.twitter} target="_blank"  class="log-social-share-link">
+          </a>
+          <a href={shareURLs.twitter} target="_blank"  class="log-social-share-link">
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -184,7 +189,8 @@ console.log("Share ",shareURLs.twitter);
                   fill="CurrentColor"></path>
               </svg>
             </div>
-          </a><a href={shareURLs.facebook} target="_blank"  class="log-social-share-link">
+          </a>
+          <a href={shareURLs.facebook} target="_blank"  class="log-social-share-link">
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -207,25 +213,9 @@ console.log("Share ",shareURLs.twitter);
 </BaseLayout>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const shareLinks = document.querySelectorAll('.log-social-share-link');
+  const link = encodeURI(window.location.href);
+  console.log("url link: ", link);
   
-  shareLinks.forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const url = link.getAttribute('href');
-      console.log('HTML href attribute:', url);
-      console.log('Is URL valid?', url && url.startsWith('http'));
-      
-      if (url && url.startsWith('http')) {
-        window.open(String(url), '_blank');
-      } else {
-        console.error('Invalid URL:', url);
-      }
-    });
-  });
-});
 </script>
 
 

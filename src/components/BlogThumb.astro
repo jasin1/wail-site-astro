@@ -6,16 +6,16 @@ const { mainImage, categoryTxt, title, bodyTxt,thumbLink } = Astro.props;
   <div class="blog-thumb-container">
     <a href={thumbLink} class="blog-thumb">
       <div class="thumb-img-wrapper">
-        <img src={mainImage} alt="" class="thumb-img" />
+        <img src={mainImage?(mainImage):("/images/blog/blog-default.svg")} alt="" class="thumb-img" />
       </div>
       <div class="tiny-txt-wrapper">
-        <p class="tiny-txt">{categoryTxt}</p>
+        <p class="tiny-txt">{categoryTxt?(categoryTxt):("Default Category")}</p>
       </div>
       <div class="thumb-title-wrapper">
-        <h3>{title}</h3>
+        <h3>{title?(title):("Default BlogPost Title here")}</h3>
       </div>
       <div class="thumb-excerpt">
-        <p>{bodyTxt}</p>
+        <p>{bodyTxt?(bodyTxt):("Praesent pulvinar nulla sapien, pulvinar gravida diam venenatis quis. Nam in enim quis mi blandit vulputate. Sed metus turpis, commodo vitae tristique interdum, tincidunt sit amet eros. Nulla sed libero sed nunc scelerisque viverra. Nunc quis ullamcorper nunc, vitae porttitor massa. Duis id elit sapien.")}</p>
       </div>
     </a>
   </div>
@@ -36,14 +36,16 @@ const { mainImage, categoryTxt, title, bodyTxt,thumbLink } = Astro.props;
 
   .thumb-img-wrapper {
     margin-bottom: 1.5rem;
+    width: 100%;
   }
 
   .thumb-img {
     object-fit: cover;
     border-radius: 12px;
-    max-width: 100%;
-    width: 403px;
-    height: 14rem;
+    aspect-ratio: 16 /9;
+    /* max-width: 100%; */
+    width: 100%;
+    /* height: 100%; */
     vertical-align: middle;
     display: inline-block;
   }
