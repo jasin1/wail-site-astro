@@ -5,7 +5,6 @@ import { getBlogPostBySlug } from "../../lib/getBlogPostBySlug";
 import { processImageAsset } from "../../utils/imageHelper";
 import { renderRichText } from "../../utils/renderRichText.js";
 
-// import { renderBlogRichText } from "../../utils/renderBlogRichText.js";
 
 export async function getStaticPaths() {
   const posts = await getAllBlogPosts();
@@ -55,7 +54,6 @@ ogUrl={currentURL}>
   <section class="blog-post-header-wrapper">
     <article class="blog-post-header">
       <div class="blog-img-wrapper">
-        <!-- {mainImg && <img src={mainImg.url} alt={mainImg.alt} />} -->
         <img
           src={mainImg?.url || "/images/blog/blog-default.svg"}
           alt={mainImg?.alt || "Default blog image"}

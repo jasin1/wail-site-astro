@@ -1,7 +1,20 @@
 ---
 import "keen-slider/keen-slider.min.css";
-// import initKeenSlider from "../scripts/initKeenSlider.js";
 import { testimonialsData } from "../data/testimonials";
+// import { getSingleEntry } from "../lib/getContentfulEntry";
+import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
+import { getAllTestimonials } from "../lib/getAllTestimonials";
+
+const testimonials = await getAllTestimonials();
+
+// @ts-ignore
+function formatDate(dateString) {
+  return new Date(dateString).toLocaleDateString("nl-NL", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
 ---
 
 <section class="testimonials">
@@ -29,34 +42,52 @@ import { testimonialsData } from "../data/testimonials";
     </div>
     <div class="keen-slider slides-container">
       {
-        testimonialsData.map((item) => (
+        testimonials && testimonials.map((item) => (
           <div class="keen-slider__slide slide">
             <div class="test-score">
-              {Array.from({ length: item.stars }).map(() => (
+              
                 <img
                   src="/images/testimonials/star.svg"
                   alt=""
                   class="img-no-radius"
                 />
-              ))}
+                                <img
+                  src="/images/testimonials/star.svg"
+                  alt=""
+                  class="img-no-radius"
+                />                <img
+                  src="/images/testimonials/star.svg"
+                  alt=""
+                  class="img-no-radius"
+                />                <img
+                  src="/images/testimonials/star.svg"
+                  alt=""
+                  class="img-no-radius"
+                />                <img
+                  src="/images/testimonials/star.svg"
+                  alt=""
+                  class="img-no-radius"
+                />
+             
             </div>
             <div class="test-text-wrapper">
-              <p>{item.text}</p>
+              <p>{item.fields.inhoud}</p>
             </div>
             <div class="test-avatar-content">
               <div class="test-avatar-wrapper">
                 <img
+                // @ts-nocheck 
                   src={
-                    item.avatar ||
+                    item.fields.avatar?.fields?.file?.url  ||
                     "/images/testimonials/testimonials_avatar_empty.svg"
                   }
-                  alt={`Avatar van ${item.name}`}
+                  alt={`Avatar van ${item.fields.name}`}
                   class="img-no-radius"
                 />
               </div>
               <div class="test-avatar-titel">
-                <h4>{item.name}</h4>
-                <p>{item.date}</p>
+                <h4>{item.fields.name}</h4>
+                <p>{formatDate(item.fields.date)}</p>
               </div>
             </div>
           </div>
@@ -129,6 +160,14 @@ import { testimonialsData } from "../data/testimonials";
     max-width: 64ch;
   }
 
+  .test-avatar-titel{
+    font-size: 1rem;
+  }
+
+  .test-avatar-titel p{
+    font-size: 1rem;
+  }
+
   .test-avatar-titel h4 {
     margin-bottom: 0.3rem;
   }
@@ -144,5 +183,9 @@ import { testimonialsData } from "../data/testimonials";
 
   .keen-slider__slide {
     min-width: 100%;
+  }
+
+  .test-avatar-wrapper img{
+    max-width: 4rem;
   }
 </style>

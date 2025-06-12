@@ -1,7 +1,6 @@
 import { deliveryClient } from "./contentful";
 
 export async function getAllBlogPosts(preview = false) {
-  // const client = preview ? previewClient : deliveryClient;
 
   try {
     const entries = await deliveryClient.getEntries({
