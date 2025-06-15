@@ -168,6 +168,14 @@ img {
   overflow: hidden;
 }
 
+.img-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
 .max-h-800 {
   max-height: 800px;
 }
