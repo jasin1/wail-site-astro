@@ -619,7 +619,8 @@ console.log("trainingen images: ",homepage?.trainingenImage);
     }
 
     .img-wrapper{
-      height: 100%;
+      width: 100%;
+      height: auto;
     }
     .home-trainingen {
       grid-template-columns: 1fr;
@@ -633,8 +634,7 @@ console.log("trainingen images: ",homepage?.trainingenImage);
 
     .img-wrapper img {
       width: 100%;
-      height:100%;
-      /* max-width: 100%; */
+      height:auto;
       object-fit:contain;
       object-position: top;
     }
@@ -656,7 +656,7 @@ console.log("trainingen images: ",homepage?.trainingenImage);
     }
   }
   @media (max-width: 460px) {
-    .hero-side {
+    .hero-side h1{
       display: none;
     }
 
