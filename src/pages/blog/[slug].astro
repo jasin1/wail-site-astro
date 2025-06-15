@@ -5,7 +5,6 @@ import { getBlogPostBySlug } from "../../lib/getBlogPostBySlug";
 import { processImageAsset } from "../../utils/imageHelper";
 import { renderRichText } from "../../utils/renderRichText.js";
 
-
 export async function getStaticPaths() {
   const posts = await getAllBlogPosts();
   return posts.map((post) => ({
@@ -23,34 +22,33 @@ if (!post) {
 const { title, content, introText } = post.fields;
 const myBody = renderRichText(content);
 
-
 const mainImg = post?.fields?.mainImage
   ? processImageAsset(post.fields.mainImage)
   : null;
 
-console.log(mainImg);
+// console.log(mainImg);
 
 //------------ share link --------------//
 
 const baseURL = import.meta.env.PUBLIC_SITE_URL;
 
-const currentURL = `${baseURL}/blog/${slug}`
+const currentURL = `${baseURL}/blog/${slug}`;
 
-const shareURLs ={
+const shareURLs = {
   facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentURL)}`,
   twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentURL)}&text=${encodeURIComponent(String(title))}`,
-  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentURL)}`
-}
-console.log(shareURLs);
-console.log('current URL: ',currentURL)
-
+  linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentURL)}`,
+};
+// console.log(shareURLs);
+// console.log("current URL: ", currentURL);
 ---
 
-<BaseLayout 
-title={title} 
-description={introText} 
-ogImage={mainImg?.url} 
-ogUrl={currentURL}>
+<BaseLayout
+  title={title}
+  description={introText}
+  ogImage={mainImg?.url}
+  ogUrl={currentURL}
+>
   <section class="blog-post-header-wrapper">
     <article class="blog-post-header">
       <div class="blog-img-wrapper">
@@ -70,7 +68,7 @@ ogUrl={currentURL}>
           <a href="/blog" class="blog-nav-link">Blogs</a>
         </div>
         <div class="blog-share-wrapper">
-          <a href="" class="log-social-share-link">
+          <a href="" class="log-social-share-link copyLinkBtn">
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -86,7 +84,11 @@ ogUrl={currentURL}>
                   fill="CurrentColor"></path>
               </svg>
             </div>
-          </a><a href={shareURLs.linkedin} target="_blank" class="log-social-share-link">
+          </a><a
+            href={shareURLs.linkedin}
+            target="_blank"
+            class="log-social-share-link"
+          >
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -102,7 +104,11 @@ ogUrl={currentURL}>
                   fill="CurrentColor"></path>
               </svg>
             </div>
-          </a><a href={shareURLs.twitter} target="_blank" class="log-social-share-link">
+          </a><a
+            href={shareURLs.twitter}
+            target="_blank"
+            class="log-social-share-link"
+          >
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -116,7 +122,11 @@ ogUrl={currentURL}>
                   fill="CurrentColor"></path>
               </svg>
             </div>
-          </a><a href={shareURLs.facebook} target="_blank" class="log-social-share-link">
+          </a><a
+            href={shareURLs.facebook}
+            target="_blank"
+            class="log-social-share-link"
+          >
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -139,7 +149,7 @@ ogUrl={currentURL}>
       <div class="blog-post-footer">
         <p>Share this post</p>
         <div class="blog-share-wrapper blog-footer">
-          <a href="" class="log-social-share-link">
+          <a href="" class="log-social-share-link copyLinkBtn">
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -156,7 +166,11 @@ ogUrl={currentURL}>
               </svg>
             </div>
           </a>
-          <a href={shareURLs.linkedin} target="_blank" class="log-social-share-link">
+          <a
+            href={shareURLs.linkedin}
+            target="_blank"
+            class="log-social-share-link"
+          >
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -173,7 +187,11 @@ ogUrl={currentURL}>
               </svg>
             </div>
           </a>
-          <a href={shareURLs.twitter} target="_blank"  class="log-social-share-link">
+          <a
+            href={shareURLs.twitter}
+            target="_blank"
+            class="log-social-share-link"
+          >
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -188,7 +206,11 @@ ogUrl={currentURL}>
               </svg>
             </div>
           </a>
-          <a href={shareURLs.facebook} target="_blank"  class="log-social-share-link">
+          <a
+            href={shareURLs.facebook}
+            target="_blank"
+            class="log-social-share-link"
+          >
             <div class="blog-social-icon-wrapper">
               <svg
                 width="24"
@@ -211,11 +233,17 @@ ogUrl={currentURL}>
 </BaseLayout>
 
 <script>
-  const link = encodeURI(window.location.href);
-  console.log("url link: ", link);
-  
-</script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const copyButtons = document.querySelectorAll(".copyLinkBtn");
 
+    copyButtons.forEach((btn) => {
+      const message = btn.querySelector(".copyMessage");
+      btn.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(window.location.href);
+      });
+    });
+  });
+</script>
 
 <style>
   /*----- richText -----*/
@@ -228,7 +256,6 @@ ogUrl={currentURL}>
     text-align: center;
     padding: 0 1rem;
   } */
-
 
   :global(.richText p) {
     margin-bottom: 1.5rem;
@@ -278,9 +305,8 @@ ogUrl={currentURL}>
     max-height: 30rem;
   }
 
-
   /*-------------------*/
- 
+
   .blog-post-header-wrapper {
   }
 

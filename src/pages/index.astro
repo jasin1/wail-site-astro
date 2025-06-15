@@ -7,7 +7,7 @@ import { splitParagraphs } from "../utils/splitParagraphs.js";
 import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
 import { getAllBlogPosts } from "../lib/getAllBlogPosts";
 import BlogThumb from "../components/BlogThumb.astro";
-import { undefined } from "astro:schema";
+
 
 const allPosts = await getAllBlogPosts();
 const latestPosts = allPosts.slice(0, 3);
@@ -36,7 +36,9 @@ const ActerenImage = homepage?.acterenImage
   ? processImageAsset(homepage.acterenImage)
   : null;
 
-console.log("Latest posts:", latestPosts);
+// console.log("Latest posts:", latestPosts);
+
+console.log("trainingen images: ",homepage?.trainingenImage);
 
 ---
 
@@ -305,14 +307,18 @@ console.log("Latest posts:", latestPosts);
           {
             latestPosts &&
               latestPosts.map((post) => {
-                return(
+                return (
                   // @ts-ignore: ContentFul type is too generic; we know post has fields
                   <BlogThumb
-                    mainImage={post.fields.mainImage?.fields?.file?.url ?? "/images/blog/blog-default.svg"}
+                    mainImage={
+                      post.fields.mainImage?.fields?.file?.url ??
+                      "/images/blog/blog-default.svg"
+                    }
                     categoryTxt={post.fields.category ?? "Onbekend"}
                     title={post.fields.title ?? "Geen titel"}
                     bodyTxt={post.fields.introText ?? "Geen tekst"}
                     thumbLink={`/blog/${post.fields.slug ?? "#"}`}
+                    alt={post.fields.mainImage?.fields?.description ?? "Blog afbeelding"}
                   />
                 );
               })
@@ -641,4 +647,18 @@ console.log("Latest posts:", latestPosts);
       grid-template-columns: 1fr 1fr;
     }
   }
+  @media (max-width: 460px) {
+    .hero-side {
+      display: none;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-thumbs-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+  
 </style>

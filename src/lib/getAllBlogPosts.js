@@ -8,7 +8,7 @@ export async function getAllBlogPosts(preview = false) {
       order: "-sys.createdAt",
     });
 
-    console.log("Fetched from Contentful:", entries.items);
+    // console.log("Fetched from Contentful:", entries.items);
 
     return entries.items;
   } catch (error) {

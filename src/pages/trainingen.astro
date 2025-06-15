@@ -24,8 +24,8 @@ const trainingImage03 = trainingen?.trainingImage03
 const rawRichText = trainingen?.bodyText;
 const richTextHtml = rawRichText ? renderRichText(rawRichText) : "";
 
-console.log(trainingen);
-console.log(richTextHtml);
+// console.log(trainingen);
+// console.log(richTextHtml);
 ---
 
 <BaseLayout title="trainingen" description="trainingen">
@@ -69,7 +69,7 @@ console.log(richTextHtml);
               <img
                 class="gallery-img top-focus"
                 src={trainingImage01.url}
-                alt=""
+                alt={trainingImage01.alt}
               />
             )
           }
@@ -80,7 +80,7 @@ console.log(richTextHtml);
               <img
                 class="gallery-img center-focus"
                 src={trainingImage02.url}
-                alt=""
+                alt={trainingImage02.alt}
               />
             )
           }
@@ -91,7 +91,7 @@ console.log(richTextHtml);
               <img
                 class="gallery-img top-focus"
                 src={trainingImage03.url}
-                alt=""
+                alt={trainingImage03.alt}
               />
             )
           }
@@ -201,4 +201,10 @@ console.log(richTextHtml);
       object-position: center;
     }
   }
+
+   @media (max-width: 460px) {
+    .promo{
+      padding: 2rem;
+    }
+   }
 </style>

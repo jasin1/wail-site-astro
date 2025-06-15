@@ -1,12 +1,12 @@
 ---
-const { mainImage, categoryTxt, title, bodyTxt,thumbLink } = Astro.props;
+const { mainImage, categoryTxt, title, bodyTxt,thumbLink, alt } = Astro.props;
 ---
 
 
   <div class="blog-thumb-container">
     <a href={thumbLink} class="blog-thumb">
       <div class="thumb-img-wrapper">
-        <img src={mainImage?(mainImage):("/images/blog/blog-default.svg")} alt="" class="thumb-img" />
+        <img src={mainImage?(mainImage):("/images/blog/blog-default.svg")} alt={alt} class="thumb-img" />
       </div>
       <div class="tiny-txt-wrapper">
         <p class="tiny-txt">{categoryTxt?(categoryTxt):("Default Category")}</p>

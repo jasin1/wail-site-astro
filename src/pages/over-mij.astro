@@ -10,6 +10,9 @@ const headerImage = overMijContent?.headerImage
   ? processImageAsset(overMijContent.headerImage)
   : null;
 
+const bodyImage = overMijContent?.bodyImage
+  ? processImageAsset(overMijContent.bodyImage)
+  : null;
 const rawRichText = overMijContent?.mainText;
 const richTextHtml = rawRichText ? renderRichText(rawRichText) : "";
 
@@ -23,7 +26,11 @@ const richTextHtml = rawRichText ? renderRichText(rawRichText) : "";
         <div class="over-mij-image-wrapper">
           {
             headerImage && (
-              <img class="over-mij-main-img" src={headerImage.url} alt="" />
+              <img
+                class="over-mij-main-img"
+                src={headerImage.url}
+                alt={headerImage.alt}
+              />
             )
           }
         </div>
@@ -90,7 +97,15 @@ const richTextHtml = rawRichText ? renderRichText(rawRichText) : "";
     <div class="wrapper">
       <div class="padding-normal">
         <div class="img-wrapper max-h-800">
-          <img src="/images/over-mij-second.jpg" alt="" />
+          {
+            bodyImage && (
+              <img
+                class="over-mij-main-img"
+                src={bodyImage.url}
+                alt={bodyImage.alt}
+              />
+            )
+          }
         </div>
       </div>
     </div>

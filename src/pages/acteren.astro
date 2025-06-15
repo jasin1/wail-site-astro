@@ -18,8 +18,6 @@ const mainImage = acteren?.acterenMainImage
 const rawRichText = acteren?.bodyText;
 const richTextHtml = rawRichText ? renderRichText(rawRichText) : "";
 
-console.log(acteren);
-console.log(richTextHtml);
 ---
 
 <BaseLayout title="acteren" description="acteren">
@@ -41,31 +39,10 @@ console.log(richTextHtml);
               {acteren ? acteren.subHeaderText : "content not found"}
             </h2>
             <div class="max-width-large" set:html={richTextHtml} />
-            <!-- <p class="max-width-large">
-              Ontdek hoe je jouw team weerbaarder maakt met laagdrempelige,
-              praktische oefeningen waarin ik als trainingsacteur realistische
-              scenario’s neerzet.
-              <br />
-              <br />
-
-              Of het nu gaat om een gesprek met een leerling die begrensd moet
-              worden, een gijzelingssimulatie, een feedbackgesprek of een
-              geëmotioneerde klant in de supermarkt, mijn brede ervaring stelt
-              me in staat om uiteenlopende gedragingen geloofwaardig neer te
-              zetten. Mijn aanpak is toegankelijk en effectief.
-              <br /><br />
-
-              Dankzij mijn achtergrond als trainer en mijn expertise in
-              communicatie en psychologie, kijk ik verder dan het oppervlakkige
-              gedrag. Ik voorzie je van waardevolle, complete feedback waarmee
-              jij je vaardigheden kunt ontwikkelen en een nóg productievere
-              professional wordt. ‍<br /><br />
-              Klaar om impact te maken? Laten we samen aan de slag gaan!
-            </p> -->
           </div>
           <div class="act-img">
-            {mainImage && <img src={mainImage.url} alt="" />}
-            <!-- <img src="/images/trainingen-02.jpg" alt="" /> -->
+            {mainImage && <img src={mainImage.url} alt={mainImage.alt} />}
+
           </div>
         </div>
       </div>

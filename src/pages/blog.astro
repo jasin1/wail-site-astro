@@ -13,7 +13,9 @@ const highlightedPosts = allPosts.filter(
   (post) => post.fields.isHighlighted === true,
 );
 
-const notHighlightedPosts = allPosts.filter((post)=> post.fields.isHighlighted !=true );
+const notHighlightedPosts = allPosts.filter(
+  (post) => post.fields.isHighlighted != true,
+);
 
 function safeDate(dateString: unknown): Date {
   if (typeof dateString === "string" && dateString.trim() !== "") {
@@ -31,7 +33,13 @@ const highlightedPost =
       })
     : null;
 
-console.log("Not Highlighted posts:", notHighlightedPosts);
+const highImage = highlightedPost?.mainImage
+  ? processImageAsset(highlightedPost.mainImage)
+  : null;
+
+  console.log("highImage :", highlightedPost?.fields.mainImage.fields.description);
+
+// console.log("Not Highlighted posts:", notHighlightedPosts);
 ---
 
 <BaseLayout title="blog" description="Blog">
@@ -51,7 +59,9 @@ console.log("Not Highlighted posts:", notHighlightedPosts);
       <a href={`/blog/${highlightedPost?.fields.slug}`} class="blog-thumb-link">
         <div class="main-blog-thumb">
           <div class="img-wrapper">
-            <img src="/images/blog/thumb-wail.jpg" alt="" />
+  
+            <!-- <img src="/images/blog/thumb-wail.jpg" alt="" /> -->
+            <img src={highlightedPost?.fields.mainImage.fields.file.url} alt={highlightedPost?.fields.mainImage.fields.description} />
           </div>
           <div class="main-blog-content">
             <p class="tiny-txt">{highlightedPost?.fields.category}</p>
@@ -76,54 +86,14 @@ console.log("Not Highlighted posts:", notHighlightedPosts);
                   title={post.fields.title ?? "Geen titel"}
                   bodyTxt={post.fields.introText ?? "Geen tekst"}
                   thumbLink={`/blog/${post.fields.slug ?? "#"}`}
+                  alt={
+                    post.fields.mainImage?.fields?.description ??
+                    "Blog afbeelding"
+                  }
                 />
               );
             })
         }
-        <!-- <a href="" class="blog-thumb-link">
-          <div class="blog-thumb-wide">
-            <div class="img-wrapper">
-              <img src="/images/blog/thumb-hand.jpg" alt="" />
-            </div>
-            <div class="blog-thumb-content">
-              <p class="tiny-txt">Gezondheid</p>
-              <h3>
-                Pornografie, de duistere waarheid: De gevaren van pornografie
-                voor onze maatschappij en jeugd
-              </h3>
-              <p>De gevaren van pornografie voor onze maatschappij en jeugd</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="blog-thumb-link">
-          <div class="blog-thumb-wide">
-            <div class="img-wrapper">
-              <img src="/images/blog/thumb-laptop.jpg" alt="" />
-            </div>
-            <div class="blog-thumb-content">
-              <p class="tiny-txt">Gezondheid</p>
-              <h3>
-                Pornografie, de duistere waarheid: wat doet het met je brein?
-              </h3>
-              <p>Wat doet het bekijken van pornografie met je brein?</p>
-            </div>
-          </div>
-        </a>
-        <a href="" class="blog-thumb-link">
-          <div class="blog-thumb-wide">
-            <div class="img-wrapper">
-              <img src="/images/blog/thumb-tunnel.jpg" alt="" />
-            </div>
-            <div class="blog-thumb-content">
-              <p class="tiny-txt">Gezondheid</p>
-              <h3>
-                Pornografie, de duistere waarheid: Hoe je kunt stoppen met
-                pornografie
-              </h3>
-              <p>Wat kun je doen om ermee te stoppen?</p>
-            </div>
-          </div>
-        </a> -->
       </div>
     </div>
   </section>
