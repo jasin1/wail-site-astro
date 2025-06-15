@@ -8,7 +8,6 @@ import { processImageAsset, getImageUrl } from "../utils/imageHelper.js";
 import { getAllBlogPosts } from "../lib/getAllBlogPosts";
 import BlogThumb from "../components/BlogThumb.astro";
 
-
 const allPosts = await getAllBlogPosts();
 const latestPosts = allPosts.slice(0, 3);
 
@@ -38,8 +37,7 @@ const ActerenImage = homepage?.acterenImage
 
 // console.log("Latest posts:", latestPosts);
 
-console.log("trainingen images: ",homepage?.trainingenImage);
-
+console.log("trainingen images: ", homepage?.trainingenImage);
 ---
 
 <BaseLayout title="Home" description="Homepage Wail Alami">
@@ -318,7 +316,10 @@ console.log("trainingen images: ",homepage?.trainingenImage);
                     title={post.fields.title ?? "Geen titel"}
                     bodyTxt={post.fields.introText ?? "Geen tekst"}
                     thumbLink={`/blog/${post.fields.slug ?? "#"}`}
-                    alt={post.fields.mainImage?.fields?.description ?? "Blog afbeelding"}
+                    alt={
+                      post.fields.mainImage?.fields?.description ??
+                      "Blog afbeelding"
+                    }
                   />
                 );
               })
@@ -613,12 +614,18 @@ console.log("trainingen images: ",homepage?.trainingenImage);
 
   /* ---- responsive ---- */
   @media (max-width: 768px) {
-    .hero-section{
+    .hero-section {
+      display: block;
       height: auto;
       overflow: hidden;
+      padding: 0;
     }
 
-    .img-wrapper{
+    .hero-grid {
+      display: block;
+    }
+
+    .hero-img-wrapper {
       width: 100%;
       height: auto;
     }
@@ -632,10 +639,11 @@ console.log("trainingen images: ",homepage?.trainingenImage);
       height: 100vh;
     }
 
-    .img-wrapper img {
+    .hero-img {
+      display: block;
       width: 100%;
-      height:auto;
-      object-fit:cover;
+      height: auto; /* 💥 belangrijk */
+      object-fit: cover; /* of cover, zie uitleg onder */
       object-position: top;
     }
 
@@ -656,7 +664,7 @@ console.log("trainingen images: ",homepage?.trainingenImage);
     }
   }
   @media (max-width: 460px) {
-    .hero-side h1{
+    .hero-side {
       display: none;
     }
 
@@ -668,5 +676,4 @@ console.log("trainingen images: ",homepage?.trainingenImage);
       grid-template-columns: 1fr;
     }
   }
-  
 </style>
