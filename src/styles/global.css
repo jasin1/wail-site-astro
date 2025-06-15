@@ -155,6 +155,10 @@ img {
 
 .img-no-radius {
   border-radius: 0;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
 }
 
 .img-wrapper {
@@ -245,11 +249,11 @@ button {
   gap: 0.5rem;
 }
 
-.no-content{
+.no-content {
   color: red;
 }
 
-.p-margin-bottom{
+.p-margin-bottom {
   margin-bottom: 2rem;
 }
 
@@ -262,7 +266,7 @@ button {
   column-gap: 2rem;
 }
 
-.column p{
+.column p {
   margin-bottom: 1.5rem;
 }
 
@@ -274,20 +278,19 @@ button {
   max-width: 48rem;
 }
 
-.max-width-large >p{
+.max-width-large > p {
   margin-bottom: 1.5rem;
 }
-
 
 @media (max-width: 768px) {
   .multi-column-text {
     column-count: 1;
   }
-  .heading-style-h1-display{
+  .heading-style-h1-display {
     font-size: 3.5rem;
   }
 
   .break-column {
-  break-before: avoid;
-}
+    break-before: avoid;
+  }
 }
